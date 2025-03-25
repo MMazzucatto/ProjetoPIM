@@ -7,7 +7,8 @@
     "dev": "vite",
     "build": "vite build",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "node-version": "nvm use 22.14.0"
   },
   "dependencies": {
     "bootstrap": "^5.3.3",
