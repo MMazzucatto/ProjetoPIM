@@ -1,8 +1,13 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import MenuInferior from "./MenuInferior";
+import MenuInferior from "../MenuInferior/MenuInferior";
+import './TelaLogin.css';
+import swal from "sweetalert2";
 
 const TelaLogin = () => {
+
+
+
   const navigate = useNavigate();
 
   const handleStartClick = () => {
@@ -13,6 +18,31 @@ const TelaLogin = () => {
     navigate("/tela-esqueceu-senha");
   };
 
+  function Login()  {
+    const email = document.getElementById("email").value;
+    const senha = document.getElementById("senha").value;
+  
+
+    if (!email || !senha) {
+      swal.fire({
+        icon: "error",
+        title: "Erro",
+        text: "Preencha todos os campos!",
+      });
+      return;
+      
+    }
+    if (!email.includes("@") || !email.includes(".")) {
+      swal.fire({
+        icon: "error",
+        title: "Erro",
+        text: "Por favor, insira um e-mail válido.",
+      });
+      return;
+    }
+
+  };
+
   return (
     <div>
       <header>
@@ -21,19 +51,13 @@ const TelaLogin = () => {
       <div class="container">
         <main>
           <div className="login-container">
-            <div>
-              <input type="email" placeholder="E-mail"></input>
-              <input type="password" placeholder="Senha"></input>
-            </div>
-            <button>Entrar</button>
-            <div
-              style={{
-                display: "flex",
-                flexDirection: "column",
-                justifyContent: "center",
-                alignItems: "center",
-              }}
-            >
+            <h1>Fazer Login</h1>
+            <form id="login-form" onSubmit={(e) => e.preventDefault()}>
+                <input id="email" type="email" placeholder="E-mail"></input>
+                <input id="senha" type="password" placeholder="Senha"></input>
+              <button type="button" onClick={Login}>Entrar</button>
+            </form>
+            <div class="google">
               Entrar com sua conta Google
               <img
                 class="LogoGoogle"
@@ -45,15 +69,7 @@ const TelaLogin = () => {
           <div class="forgot-password" onClick={handleForgotPasswordClick}>
             Esqueci minha senha!
           </div>
-          <div
-            style={{
-              display: "flex",
-              flexDirection: "column",
-              justifyContent: "center",
-              alignItems: "center",
-              marginTop: "40px",
-            }}
-          >
+          <div class="direcionar-cadastro">
             <a>Ainda nao tem conta?</a>
             <b onClick={handleStartClick} class="forgot-password">
               Se inscreva

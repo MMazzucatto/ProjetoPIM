@@ -1,9 +1,14 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import MenuInferior from "./MenuInferior";
+import MenuInferior from "../MenuInferior/MenuInferior";
+import "./Configuracoes.css";
 
 const Configuracoes = () => {
   const navigate = useNavigate();
+
+  const handleBackClick = () => {
+    navigate("/tela-denuncia");
+  };
 
   const handleSobreClick = () => {
     navigate("/sobre");
@@ -22,7 +27,16 @@ const Configuracoes = () => {
         <img src="/img/LogoViaCertaRoxo.PNG" alt="Logo do Via Certa ABC" />
       </header>
       <main className="container">
-        <h3>Configurações</h3>
+        <div className="btnVoltar">
+          <img
+            src="/img/seta-esquerda.png"
+            class="icones"
+            onClick={handleBackClick}
+          />
+          <h2 class="tituloConfiguracoes">
+            Configurações
+          </h2>
+        </div>{" "}
         <div class="opcoes">
           <a>
             <img src="/img/estrela.png" class="icones" />
@@ -45,20 +59,11 @@ const Configuracoes = () => {
             Sobre
           </a>
         </div>
-        <div
-          style={{
-            display: "flex",
-            flexDirection: "column",
-            textAlign: "center",
-            alignItems: "center",
-            marginTop: "20px",
-          }}
-        >
+        <div class="btnDoar">
           <h2>Doe e Ajude!</h2>
           <img
             src="/img/doar.png"
-            class="icones"
-            style={{ height: "100px", width: "100px", marginTop: "20px" }}
+            class="icones imgDoar"
           />
         </div>
       </main>

@@ -1,6 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import MenuInferior from "./MenuInferior";
+import MenuInferior from "../MenuInferior/MenuInferior";
+import "./Usuario.css";
 
 const Usuario = () => {
   const navigate = useNavigate();
@@ -16,16 +17,10 @@ const Usuario = () => {
       </header>
       <div class="container">
         <main>
-          <div
-            style={{
-              alignItems: "center",
-              textAlign: "center",
-              marginBottom: "10px",
-            }}
-          >
+          <div class="DadosUsuario">
             <img class="FotoPerfil" src="/img/do-utilizador.png"></img>
           </div>
-          <div className="login-container">
+          <div className="usuario-container">
             <p type="name" placeholder="E-mail">
               <strong>Nome:</strong> Joao
             </p>
@@ -37,13 +32,12 @@ const Usuario = () => {
             </p>
           </div>
           <div
-            className="login-container"
-            style={{ marginTop: "20px", padding: "5px" }}
+            className="usuario-container MinhasDenuncias"
           >
             <h1>Minhas denúncias</h1>
           </div>
 
-          <div className="login-container" style={{ marginTop: "20px" }}>
+          <div className="usuario-container Denuncias" >
             <hover>Denúncias</hover>
           </div>
         </main>

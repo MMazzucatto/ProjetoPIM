@@ -1,5 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import "./MenuInferior.css"; 
 
 const MenuInferior = () => {
   const navigate = useNavigate();

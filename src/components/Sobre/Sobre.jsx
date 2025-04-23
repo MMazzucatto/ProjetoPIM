@@ -1,15 +1,18 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import MenuInferior from "./MenuInferior";
+import MenuInferior from "../MenuInferior/MenuInferior";
+import "./Sobre.css";
 
 const Sobre = () => {
+
   return (
     <div>
       <header>
         <img src="/img/LogoViaCertaRoxo.PNG" alt="Logo do Via Certa ABC" />
       </header>
       <main>
-        <div className="login-container">
+
+        <div className="sobre-container">
           <div>
             <h1>Sobre nós:</h1>
             <p>

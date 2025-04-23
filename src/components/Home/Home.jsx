@@ -1,5 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import "./Home.css"; 
 
 const Home = () => {
   const navigate = useNavigate();
@@ -9,7 +10,7 @@ const Home = () => {
   };
 
   return (
-    <div style={{ backgroundColor: "#F2F2F2" }}>
+    <div className="home-container">
       <header>
         <img src="/img/LogoViaCerta.PNG" alt="Logo do Via Certa ABC" />
       </header>
@@ -29,7 +30,7 @@ const Home = () => {
           <div className="botao">
             <button onClick={handleStartClick}>Iniciar</button>
           </div>
-          <div style={{ textAlign: "center" }}>
+          <div className="TextoRodape">
             Reporte, participe e transforme <br /> sua comunidade!
           </div>
         </main>

@@ -1,0 +1,11 @@
+
+
+  .menu-inferior {
+    display: flex;
+    justify-content: space-around;
+    padding: 15px;
+    list-style: none;
+    background-color: #3d1b5a;
+    border-top: 2px solid white;
+  }
+  

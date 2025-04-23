@@ -1,16 +1,16 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import Home from "./components/Home";
-import TelaLogin from "./components/TelaLogin";
-import TelaCadastro from "./components/TelaCadastro";
-import TelaEsqueceuSenha from "./components/TelaEsqueceuSenha";
-import TelaRedefinirSenha from "./components/TelaRedefinirSenha";
-import TelaDenuncia from "./components/TelaDenuncia";
-import Configuracoes from "./components/Configuracoes";
-import Sobre from "./components/Sobre";
-import Notificacoes from "./components/Notificacoes";
-import PrivacidadeeSeguranca from "./components/PrivacidadeeSeguranca";
-import Usuario from "./components/Usuario";
+import Home from "./components/Home/Home";
+import TelaLogin from "./components/TelaLogin/TelaLogin";
+import TelaCadastro from "./components/TelaCadastro/TelaCadastro";
+import TelaEsqueceuSenha from "./components/TelaEsqueceuSenha/TelaEsqueceuSenha";
+import TelaRedefinirSenha from "./components/TelaRedefinirSenha/TelaRedefinirSenha";
+import TelaDenuncia from "./components/TelaDenuncia/TelaDenuncia";
+import Configuracoes from "./components/Configuracoes/Configuracoes";
+import Sobre from "./components/Sobre/Sobre";
+import Notificacoes from "./components/Notificacoes/Notificacoes";
+import PrivacidadeeSeguranca from "./components/PrivacidadeeSeguranca/PrivacidadeeSeguranca";
+import Usuario from "./components/Usuario/Usuario";
 
 const AppRouter = () => (
   <Router>

@@ -3,26 +3,6 @@ img {
   height: auto;
 }
 
-.mapa {
-  margin-top: 2rem;
-  text-align: center;
-  font-weight: bold;
-  font-size: 60px;
-}
-
-.menu {
-  display: none;
-  padding: 10px;
-  list-style: none;
-}
-.menu li {
-  padding: 10px;
-  border-bottom: 1px solid purple;
-}
-.menu li:last-child {
-  border-bottom: none;
-}
-
 footer {
   position: fixed;
   bottom: 0;
@@ -30,107 +10,12 @@ footer {
   text-align: center;
 }
 
-.menu-inferior {
-  display: flex;
-  justify-content: space-around;
-  padding: 15px;
-  list-style: none;
-  background-color: #3d1b5a;
-  border-top: 2px solid white;
-}
-
-.icones {
-  width: 30px;
-  height: 30px;
-}
-
-.corpo {
-  background-color: #3d1b5a !important;
-}
-
-.opcoes {
-  display: flex;
-  flex-direction: column;
-}
-
-.opcoes a {
-  display: flex;
-  align-items: center;
-  text-decoration: none;
-  color: inherit;
-  padding: 10px;
-}
-
-.opcoes img {
-  margin-right: 10px;
-}
-
-a,
-u {
+a,u {
   color: white !important;
 }
 
-h3,
-h2 {
+h3,h2 {
   color: white;
-}
-
-.FotoPerfil {
-  width: 100px;
-  height: auto;
-}
-
-.login-container {
-  background: #f5f5f5;
-  padding: 20px;
-  border-radius: 45px;
-  text-align: center;
-  margin-left: 25px;
-  width: 85%;
-}
-.login-container input {
-  width: 94%;
-  padding: 10px;
-  margin: 10px 0;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-}
-.login-container button {
-  width: 60%;
-  padding: 10px;
-  background-color: #6a0dad;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  font-weight: 600;
-}
-.google-btn {
-  background: white;
-  color: #555;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border: 1px solid #ccc;
-  margin-top: 10px;
-}
-.google-btn img {
-  width: 20px;
-  margin-right: 8px;
-}
-.forgot-password {
-  margin-top: 10px;
-  font-size: 20px;
-  color: purple;
-  cursor: pointer;
-  text-align: center;
-  font-weight: 600;
-}
-
-.LogoGoogle {
-  width: 50px;
-  height: 50px;
-  margin-top: 10px;
 }
 
 body {
@@ -149,13 +34,7 @@ footer {
   font-size: 15px;
   text-align: center;
 }
-
-.titulo {
-  text-align: center;
-  font-size: 35px;
-  font-family: "Montserrat", Arial, sans-serif;
-}
-
+ 
 main {
   flex: 1;
   width: 100%;
@@ -173,12 +52,13 @@ button {
   margin-bottom: 1rem !important;
 }
 
-.botao {
-  text-align: center;
-}
 
 button:hover {
   background-color: purple;
+}
+
+body {
+  background-color: #3d1b5a !important;
 }
 
 .text {
@@ -188,13 +68,23 @@ button:hover {
   margin-left: 25px;
 }
 
-.subtitulo {
-  font-size: 19px;
-  margin-top: 5px;
-  text-align: center;
-  font-family: "Montserrat", Arial, sans-serif;
+.btnVoltar{
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+  margin-top: 20px;
+
 }
 
-body {
-  background-color: #3d1b5a !important;
+.icones {
+  width: 30px;
+  height: 30px;
 }
+
+
+
+
+
+
+
+
