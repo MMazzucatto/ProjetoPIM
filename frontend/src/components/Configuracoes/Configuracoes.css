@@ -1,0 +1,39 @@
+.opcoes {
+  display: flex;
+  flex-direction: column;
+}
+
+.opcoes a {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: inherit;
+  padding: 10px;
+}
+
+.opcoes img {
+  margin-right: 10px;
+}
+.icones {
+  width: 30px;
+  height: 30px;
+}
+
+.btnDoar {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.imgDoar{
+  height: 100px !important;
+   width: 100px !important;
+  margin-Top: 20px
+}
+
+.tituloConfiguracoes {
+  margin-bottom: 0px;
+  margin-left: 10px;
+}
