@@ -24,7 +24,7 @@ const Configuracoes = () => {
   return (
     <div>
       <header>
-        <img src="/img/LogoViaCertaRoxo.PNG" alt="Logo do Via Certa ABC" />
+        <img src="/img/LogoZelo+.png" alt="Logo do Via Certa ABC" class="logo" />
       </header>
       <main className="container">
         <div className="btnVoltar">
@@ -40,7 +40,7 @@ const Configuracoes = () => {
         <div class="opcoes">
           <a>
             <img src="/img/estrela.png" class="icones" />
-            Aparencia
+            Aparência
           </a>
           <a onClick={handlePrivacidadeeSegurancaClick}>
             <img src="/img/cadeado.png" class="icones" />

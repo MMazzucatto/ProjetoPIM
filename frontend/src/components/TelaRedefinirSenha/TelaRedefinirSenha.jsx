@@ -40,11 +40,11 @@ const TelaRedefinirSenha = () => {
   return (
     <div>
       <header>
-        <img src="/img/LogoViaCertaRoxo.PNG" alt="Logo do Via Certa ABC" />
+        <img src="/img/LogoZelo+.png" alt="Logo do Via Certa ABC" class="logo" />
       </header>
 
       <div class="container">
-        <main>
+        <main className="formularioRedefinirSenha">
           <div className="RedefinirSenha-container">
             <h1>Redefinir Senha</h1>
             <form>

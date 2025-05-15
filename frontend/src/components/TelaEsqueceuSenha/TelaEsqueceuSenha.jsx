@@ -39,11 +39,11 @@ const TelaEsqueceuSenha = () => {
   return (
     <div>
       <header>
-        <img src="/img/LogoViaCertaRoxo.PNG" alt="Logo do Via Certa ABC" />
+        <img src="/img/LogoZelo+.png" alt="Logo do Via Certa ABC" class="logo" />
       </header>
 
       <div class="container">
-        <main>
+        <main className="formularioEqueceuSenha">
           <div className="EsqueceuSenha-container">
             <h1>Esqueceu sua Senha?</h1>
             <form>
