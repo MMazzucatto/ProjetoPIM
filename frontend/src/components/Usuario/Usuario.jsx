@@ -13,7 +13,11 @@ const Usuario = () => {
   return (
     <div>
       <header>
-        <img src="/img/LogoViaCertaRoxo.png" alt="Logo do Via Certa ABC" />
+        <img
+          src="/img/LogoZelo+.png"
+          alt="Logo do Via Certa ABC"
+          class="logo"
+        />
       </header>
       <div class="container">
         <main>
@@ -31,14 +35,30 @@ const Usuario = () => {
               <strong>E-mail:</strong> joao@gmail.com
             </p>
           </div>
-          <div
-            className="usuario-container MinhasDenuncias"
-          >
+          <div className="usuario-container MinhasDenuncias">
             <h1>Minhas denúncias</h1>
           </div>
-
-          <div className="usuario-container Denuncias" >
-            <hover>Denúncias</hover>
+          <div className="DenunciasFeitas" >
+            <div className="usuario-container Denuncias">
+              <h1 class="status">Pendente</h1>
+              <h5>Lampada Queimada</h5>
+              <p class="local">Banheiro masculino</p>
+            </div>
+            <div className="usuario-container Denuncias">
+              <h1 class="status">Pendente</h1>
+              <h5>Lampada Queimada</h5>
+              <p class="local">Banheiro masculino</p>
+            </div>
+            <div className="usuario-container Denuncias">
+              <h1 class="status">Pendente</h1>
+              <h5>Lampada Queimada</h5>
+              <p class="local">Banheiro masculino</p>
+            </div>
+            <div className="usuario-container Denuncias">
+              <h1 class="status">Pendente</h1>
+              <h5>Lampada Queimada</h5>
+              <p class="local">Banheiro masculino</p>
+            </div>
           </div>
         </main>
       </div>

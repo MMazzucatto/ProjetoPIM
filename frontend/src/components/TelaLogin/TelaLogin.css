@@ -1,44 +1,43 @@
 .login-container {
-    background: #f5f5f5;
-    padding: 20px;
-    border-radius: 45px;
-    text-align: center;
-    margin-left: 30px;
-    width: 85%;
-  }
+  background: white;
+  padding: 20px;
+  border-radius: 50px;
+  text-align: center;
+  width: 100%;
+}
 
-  .LogoGoogle {
-    width: 50px;
-    height: 50px;
-    margin-top: 10px;
-  }
-  .google{
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    display: flex;
+.LogoGoogle {
+  width: 40px;
+  height: 40px;
+  margin-top: 10px !important;
+}
+.google {
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  display: flex;
 }
 .forgot-password {
-    margin-top: 10px;
-    font-size: 20px;
-    color: purple;
-    cursor: pointer;
-    text-align: center;
-    font-weight: 600;
-  }
+  margin-top: 10px;
+  font-size: 20px;
+  color: #4169E1;
+  cursor: pointer;
+  text-align: center;
+  font-weight: 600;
+}
 
-  .direcionar-cadastro{
-    display: flex;
-    flex-Direction: column;
-    justify-Content: center;
-    align-Items: center;
-    margin-Top: 40px;
-  }
+.direcionar-cadastro {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 40px;
+}
 
-  .login-container input {
-    width: 94%;
-    padding: 10px;
-    margin: 10px 0;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-  }
+.login-container input {
+  width: 94%;
+  padding: 10px;
+  margin: 10px 0;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}

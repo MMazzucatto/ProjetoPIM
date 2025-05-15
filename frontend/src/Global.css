@@ -1,5 +1,5 @@
 img {
-  width: 100%;
+  width: 65%;
   height: auto;
 }
 
@@ -7,20 +7,13 @@ footer {
   position: fixed;
   bottom: 0;
   width: 100% !important;
+  font-size: 15px;
   text-align: center;
-}
-
-a,u {
-  color: white !important;
-}
-
-h3,h2 {
-  color: white;
 }
 
 body {
   font-family: Arial, sans-serif;
-  background-color: lightgray;
+  background-color: #F6F8F9;
   margin: 0px !important;
   width: 100%;
 }
@@ -30,19 +23,15 @@ header {
   color: default;
 }
 
-footer {
-  font-size: 15px;
-  text-align: center;
-}
- 
 main {
   flex: 1;
   width: 100%;
+  background-color: #F6F8F9;
 }
 
 button {
   padding: 13px 5rem;
-  background-color: purple;
+  background-color: #4169E1;
   color: white;
   border: none;
   border-radius: 5px !important;
@@ -52,28 +41,37 @@ button {
   margin-bottom: 1rem !important;
 }
 
-
 button:hover {
-  background-color: purple;
+  background-color: #00008B;
 }
 
-body {
-  background-color: #3d1b5a !important;
+main
+{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 20px;
+  margin-top: 40px;
+}
+
+p{
+  margin-bottom: 0px !important;
 }
 
 .text {
   font-size: 23px;
-  margin-top: 2rem;
+  margin-top: 4rem;
+  margin-bottom: 4rem;
   font-family: "Montserrat", Arial, sans-serif;
-  margin-left: 25px;
+  text-align: center;
 }
 
-.btnVoltar{
+.btnVoltar {
   display: flex;
   align-items: center;
   margin-bottom: 20px;
   margin-top: 20px;
-
 }
 
 .icones {
@@ -81,10 +79,7 @@ body {
   height: 30px;
 }
 
-
-
-
-
-
-
-
+.logo {
+  width: 100%;
+  height: auto;
+}

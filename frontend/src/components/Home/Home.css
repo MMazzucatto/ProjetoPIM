@@ -1,24 +1,28 @@
 .titulo {
     text-align: center;
-    font-size: 35px;
+    font-size: 40px;
     font-family: "Montserrat", Arial, sans-serif;
+    font-weight: bold;
   }
 
-  .subtitulo {
-    font-size: 19px;
-    margin-top: 5px;
-    text-align: center;
-    font-family: "Montserrat", Arial, sans-serif;
-  }
 
   .botao {
     text-align: center;
   }
 
   .home-container{
-    background-Color: #F2F2F2
+    background-Color: #e8e7e8
   }
   
   .TextoRodape{
      text-Align: center;
+  }
+
+  .textoZeloPlus{
+    margin-top: -15px !important;
+    background-color: #E8E7E8 !important;
+  }
+
+  .header{
+    margin-top: 2rem;
   }

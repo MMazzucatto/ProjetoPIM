@@ -11,27 +11,21 @@ const Home = () => {
 
   return (
     <div className="home-container">
-      <header>
-        <img src="/img/LogoViaCerta.PNG" alt="Logo do Via Certa ABC" />
+      <header className="header">
+        <img src="/img/LogoZeloPlus.jpg" alt="Logo do Via Certa ABC" />
       </header>
       <div>
-        <main>
+        <main className="textoZeloPlus">
           <div className="titulo">
-            Bem Vindo ao <br /> VIA CERTA ABC
+            Bem Vindo a <br /> Zelo+
           </div>
-          <div className="subtitulo">
-            Aqui você tem o poder de fazer a diferença
-          </div>
-          <div className="text">
+          <div className="text container">
             Nossa plataforma simplifica o processo de comunicação, conectando
             você diretamente com as autoridades locais responsáveis pela
             manutenção de vias urbanas.
           </div>
           <div className="botao">
-            <button onClick={handleStartClick}>Iniciar</button>
-          </div>
-          <div className="TextoRodape">
-            Reporte, participe e transforme <br /> sua comunidade!
+            <button onClick={handleStartClick}>Acessar</button>
           </div>
         </main>
       </div>
