@@ -1,13 +1,13 @@
-import React from "react";
-import { useNavigate } from "react-router-dom";
-import "./Home.css"; 
+import React from "react"
+import { useNavigate } from "react-router-dom"
+import "./Home.css"
 
 const Home = () => {
-  const navigate = useNavigate();
+  const navigate = useNavigate()
 
   const handleStartClick = () => {
-    navigate("/tela-denuncia");
-  };
+    navigate("/tela-relato")
+  }
 
   return (
     <div className="home-container">
@@ -30,7 +30,7 @@ const Home = () => {
         </main>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default Home;
+export default Home

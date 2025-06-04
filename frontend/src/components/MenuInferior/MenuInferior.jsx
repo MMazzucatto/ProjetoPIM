@@ -1,25 +1,25 @@
-import React from "react";
-import { useNavigate } from "react-router-dom";
-import "./MenuInferior.css"; 
+import React from "react"
+import { useNavigate } from "react-router-dom"
+import "./MenuInferior.css"
 
 const MenuInferior = () => {
-  const navigate = useNavigate();
+  const navigate = useNavigate()
 
   const handleHomeClick = () => {
-    navigate("/");
-  };
+    navigate("/")
+  }
 
   const handleLoginClick = () => {
-    navigate("/tela-login");
-  };
+    navigate("/tela-login")
+  }
 
   const handleConfigClick = () => {
-    navigate("/configuracoes");
-  };
+    navigate("/configuracoes")
+  }
 
   const handleDenunciaClick = () => {
-    navigate("/tela-denuncia");
-  };
+    navigate("/tela-relato")
+  }
 
   return (
     <div class="menu-inferior">
@@ -48,6 +48,6 @@ const MenuInferior = () => {
         onClick={handleConfigClick}
       />
     </div>
-  );
-};
-export default MenuInferior;
+  )
+}
+export default MenuInferior

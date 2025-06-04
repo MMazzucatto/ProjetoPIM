@@ -1,4 +1,4 @@
-import { sequelize } from "../database.js"
+import { sequelize } from "../../database.js"
 import { DataTypes } from "sequelize"
 
 const Relato = sequelize.define(
@@ -19,7 +19,7 @@ const Relato = sequelize.define(
     },
     idResponsavel: {
       type: DataTypes.INTEGER,
-      allowNull: false,
+      allowNull: true,
       references: {
         model: "Responsavel",
         key: "idResponsavel",
@@ -33,6 +33,10 @@ const Relato = sequelize.define(
         key: "idStatus",
       },
     },
+    titulo: {
+      type: DataTypes.STRING(100),
+      allowNull: false,
+    },
     descricao: {
       type: DataTypes.STRING(500),
       allowNull: false,
@@ -42,6 +46,14 @@ const Relato = sequelize.define(
       allowNull: true,
     },
     dataFechamento: {
+      type: DataTypes.DATE,
+      allowNull: true,
+    },
+    createdAt: {
+      type: DataTypes.DATE,
+      allowNull: true,
+    },
+    updatedAt: {
       type: DataTypes.DATE,
       allowNull: true,
     },

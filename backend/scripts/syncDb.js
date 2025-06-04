@@ -1,6 +1,6 @@
 import "dotenv/config"
-import { sequelize } from "./database.js"
-import db from "./database/models/index.js"
+import { sequelize } from "../database.js"
+import db from "../database/models/index.js"
 
 async function syncDatabase() {
   try {
