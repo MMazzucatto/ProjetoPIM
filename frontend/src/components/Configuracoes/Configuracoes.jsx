@@ -1,30 +1,34 @@
-import React from "react";
-import { useNavigate } from "react-router-dom";
-import MenuInferior from "../MenuInferior/MenuInferior";
-import "./Configuracoes.css";
+import React from "react"
+import { useNavigate } from "react-router-dom"
+import MenuInferior from "../MenuInferior/MenuInferior"
+import "./Configuracoes.css"
 
 const Configuracoes = () => {
-  const navigate = useNavigate();
+  const navigate = useNavigate()
 
   const handleBackClick = () => {
-    navigate("/tela-denuncia");
-  };
+    navigate("/tela-relato")
+  }
 
   const handleSobreClick = () => {
-    navigate("/sobre");
-  };
+    navigate("/sobre")
+  }
 
   const handleNotificacoesClick = () => {
-    navigate("/notificacoes");
-  };
+    navigate("/notificacoes")
+  }
 
   const handlePrivacidadeeSegurancaClick = () => {
-    navigate("/privacidade-e-seguranca");
-  };
+    navigate("/privacidade-e-seguranca")
+  }
   return (
     <div>
       <header>
-        <img src="/img/LogoZelo+.png" alt="Logo do Via Certa ABC" class="logo" />
+        <img
+          src="/img/LogoZelo+.png"
+          alt="Logo do Via Certa ABC"
+          class="logo"
+        />
       </header>
       <main className="container">
         <div className="btnVoltar">
@@ -33,9 +37,7 @@ const Configuracoes = () => {
             class="icones"
             onClick={handleBackClick}
           />
-          <h2 class="tituloConfiguracoes">
-            Configurações
-          </h2>
+          <h2 class="tituloConfiguracoes">Configurações</h2>
         </div>{" "}
         <div class="opcoes">
           <a>
@@ -61,10 +63,7 @@ const Configuracoes = () => {
         </div>
         <div class="btnDoar">
           <h2>Doe e Ajude!</h2>
-          <img
-            src="/img/doar.png"
-            class="icones imgDoar"
-          />
+          <img src="/img/doar.png" class="icones imgDoar" />
         </div>
       </main>
 
@@ -72,7 +71,7 @@ const Configuracoes = () => {
         <MenuInferior />
       </footer>
     </div>
-  );
-};
+  )
+}
 
-export default Configuracoes;
+export default Configuracoes

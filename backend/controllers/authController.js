@@ -46,7 +46,7 @@ export const login = async (req, res) => {
     const senhaValida = await bcrypt.compare(senha, usuario.senha)
 
     if (!senhaValida) {
-      res.status(401).json({ error: "Senha inválida!" })
+      return res.status(401).json({ error: "Senha inválida!" })
     }
 
     const token = jwt.sign(
@@ -55,9 +55,12 @@ export const login = async (req, res) => {
       { expiresIn: "1d" }
     )
 
-    return res
-      .status(200)
-      .json({ message: "Login realizado com sucesso!", auth: true, token })
+    return res.status(200).json({
+      message: "Login realizado com sucesso!",
+      auth: true,
+      token,
+      idUsuario: usuario.idUsuario,
+    })
   } catch (error) {
     res.status(500).json({ error: "Erro no servidor", details: error.message })
   }
