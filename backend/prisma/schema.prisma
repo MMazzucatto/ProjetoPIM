@@ -1,0 +1,92 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Avaliacao {
+  idAvaliacao Int      @id @default(autoincrement())
+  idRelato    Int
+  descricao   String   @db.VarChar(200)
+  createdAt   DateTime @db.Timestamptz(6)
+  updatedAt   DateTime @db.Timestamptz(6)
+  Relato      Relato   @relation(fields: [idRelato], references: [idRelato], onDelete: Cascade)
+}
+
+model Funcionario {
+  idFuncionario Int      @id @default(autoincrement())
+  nome          String   @db.VarChar(100)
+  cargo         String   @db.VarChar(50)
+  createdAt     DateTime @db.Timestamptz(6)
+  updatedAt     DateTime @db.Timestamptz(6)
+  Tarefa        Tarefa[]
+}
+
+model Relato {
+  idRelato       Int          @id @default(autoincrement())
+  titulo         String       @db.VarChar(100)
+  descricao      String       @db.VarChar(500)
+  idUsuario      Int
+  createdAt      DateTime     @db.Timestamptz(6)
+  updatedAt      DateTime     @db.Timestamptz(6)
+  idStatus       Int
+  idResponsavel  Int?
+  dataStatus     DateTime?    @db.Date
+  dataFechamento DateTime?    @db.Date
+  Avaliacao      Avaliacao[]
+  Usuario        Usuario      @relation(fields: [idUsuario], references: [idUsuario], onDelete: Cascade)
+  Responsavel    Responsavel? @relation(fields: [idResponsavel], references: [idResponsavel], onDelete: NoAction, onUpdate: NoAction, map: "fk_idresponsavel")
+  Status         Status       @relation(fields: [idStatus], references: [idStatus], onDelete: NoAction, onUpdate: NoAction, map: "fk_idstatus")
+  Resposta       Resposta[]
+}
+
+model Responsavel {
+  idResponsavel Int      @id @default(autoincrement())
+  nome          String   @db.VarChar(100)
+  email         String   @unique @db.VarChar(100)
+  createdAt     DateTime @db.Timestamptz(6)
+  updatedAt     DateTime @db.Timestamptz(6)
+  Relato        Relato[]
+}
+
+model Resposta {
+  idResposta Int      @id @default(autoincrement())
+  idRelato   Int
+  conteudo   String
+  createdAt  DateTime @db.Timestamptz(6)
+  updatedAt  DateTime @db.Timestamptz(6)
+  Relato     Relato   @relation(fields: [idRelato], references: [idRelato], onDelete: Cascade)
+}
+
+model Status {
+  idStatus  Int      @id @default(autoincrement())
+  nome      String   @db.VarChar(50)
+  tabela    String   @db.VarChar(50)
+  createdAt DateTime @db.Timestamptz(6)
+  updatedAt DateTime @db.Timestamptz(6)
+  Relato    Relato[]
+}
+
+model Tarefa {
+  idTarefa      Int         @id @default(autoincrement())
+  descricao     String      @db.VarChar(200)
+  prazo         DateTime?   @db.Timestamptz(6)
+  idFuncionario Int
+  createdAt     DateTime    @db.Timestamptz(6)
+  updatedAt     DateTime    @db.Timestamptz(6)
+  Funcionario   Funcionario @relation(fields: [idFuncionario], references: [idFuncionario], onDelete: Cascade)
+}
+
+model Usuario {
+  idUsuario Int      @id @default(autoincrement())
+  nome      String   @db.VarChar(100)
+  email     String   @unique @db.VarChar(100)
+  senha     String   @db.VarChar(255)
+  tipoPerfil String @db.VarChar(100)
+  createdAt DateTime @db.Timestamptz(6)
+  updatedAt DateTime @db.Timestamptz(6)
+  Relato    Relato[]
+}
