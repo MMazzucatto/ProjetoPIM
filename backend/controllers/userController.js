@@ -1,5 +1,7 @@
-import Relato from "../database/models/Relato.js"
+import { PrismaClient } from "@prisma/client"
 import jwt from "jsonwebtoken"
+
+const prisma = new PrismaClient()
 
 export const createReport = async (req, res) => {
   const { titulo, descricao, idUsuario } = req.body
@@ -24,12 +26,14 @@ export const createReport = async (req, res) => {
         .json({ error: "Token inválido para este usuário!" })
     }
 
-    const novoRelato = await Relato.create({
-      titulo,
-      descricao,
-      idUsuario,
-      idResponsavel: null,
-      idStatus: 1,
+    const novoRelato = await prisma.relato.create({
+      data: {
+        titulo,
+        descricao,
+        idUsuario,
+        idResponsavel: null,
+        idStatus: 1,
+      },
     })
 
     res.status(201).json({

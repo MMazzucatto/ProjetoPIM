@@ -1,6 +1,5 @@
 import "dotenv/config"
 import express from "express"
-import { sequelize } from "./database.js"
 import { PrismaClient } from "@prisma/client"
 import authRoutes from "./routes/authRoutes.js"
 import cors from "cors"
