@@ -1,21 +1,26 @@
-import Usuario from "../database/models/Usuario.js"
 import jwt from "jsonwebtoken"
-import bcrypt, { hash } from "bcrypt"
+import bcrypt from "bcrypt"
+import { PrismaClient } from "@prisma/client"
+
+const prisma = new PrismaClient()
 
 export const register = async (req, res) => {
-  const { nome, email, senha } = req.body
+  const { nome, email, senha, tipoPerfil } = req.body
 
   try {
-    if (!nome || !email || !senha) {
+    if (!nome || !email || !senha || !tipoPerfil) {
       return res.status(400).json({ error: "Todos os campos são obrigatórios" })
     }
 
     const senhaHash = await bcrypt.hash(senha, 10)
 
-    const novoUsuario = await Usuario.create({
-      nome,
-      email,
-      senha: senhaHash,
+    const novoUsuario = await prisma.usuario.create({
+      data: {
+        nome,
+        email,
+        senha: senhaHash,
+        tipoPerfil,
+      },
     })
 
     res.status(201).json({
@@ -37,7 +42,7 @@ export const login = async (req, res) => {
   }
 
   try {
-    const usuario = await Usuario.findOne({ where: { email } })
+    const usuario = await prisma.usuario.findUnique({ where: { email } })
 
     if (!usuario) {
       return res.status(404).json({ error: "Usuário não encontrado!" })
@@ -80,14 +85,17 @@ export const redefinirSenha = async (req, res) => {
   }
 
   try {
-    const usuario = await Usuario.findOne({ where: { email } })
+    const usuario = await prisma.usuario.findUnique({ where: { email } })
     if (!usuario) {
       return res.status(404).json({ error: "Usuário não encontrado!" })
     }
 
     const senhaHash = await bcrypt.hash(senha, 10)
 
-    await usuario.update({ senha: senhaHash })
+    await prisma.usuario.update({
+      where: { email },
+      data: { senha: senhaHash },
+    })
 
     return res.status(200).json({ message: "Senha alterada com sucesso!" })
   } catch (error) {
