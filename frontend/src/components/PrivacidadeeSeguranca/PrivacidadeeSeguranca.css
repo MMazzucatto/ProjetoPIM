@@ -1,18 +1,45 @@
-.tituloPrivacidade{
-    margin-Bottom: 0px;
-    margin-Left:10px
+.tituloPrivacidade {
+  margin-bottom: 0px;
+  margin-left: 10px;
 }
 
-.Doar{
-    display: flex;
-    flex-Direction: column;
-    text-Align: center;
-    align-Items: center;
-    margin-Top: 20px;
+.Doar {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  align-items: center;
+  margin-top: 20px;
 }
 
-.imgDoar{
-    height: 100px !important;
-    width: 100px !important;
-    margin-Top: 20px 
+.imgDoar {
+  height: 100px !important;
+  width: 100px !important;
+  margin-top: 20px;
+}
+
+.opcoes {
+  display: flex;
+  flex-direction: column;
+  padding: 0 20px;
+}
+
+.opcoes button {
+  background: none;
+  border: none;
+  padding: 6px 0;
+  font-size: 10px;
+  color: #333;
+  text-align: left;
+  width: 100%;
+  font-weight: 500;
+  cursor: pointer;
+  border-bottom: 1px solid #e0e0e0;
+  transition: color 0.2s ease;
+}
+
+.opcoes button:focus,
+.opcoes button:active {
+  outline: none;
+  background: none;
+  box-shadow: none;
 }

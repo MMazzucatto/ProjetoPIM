@@ -1,12 +1,20 @@
-import React from "react"
+import { useEffect } from "react"
 import { useNavigate } from "react-router-dom"
 import MenuInferior from "../MenuInferior/MenuInferior"
 import "./TelaLogin.css"
 import swal from "sweetalert2"
+import { isAuthenticated } from "../../utils/authValidation.js"
 import { login } from "./TelaLogin.service"
 
 const TelaLogin = () => {
   const navigate = useNavigate()
+
+  useEffect(() => {
+    if (isAuthenticated()) {
+      // não esquecer de confirmar se é pra essa tela ou se é pra tela de usuário
+      navigate("/privacidade-e-seguranca")
+    }
+  }, [navigate])
 
   const handleStartClick = () => {
     navigate("/tela-cadastro")
@@ -43,6 +51,7 @@ const TelaLogin = () => {
       if (response.data.token && response.data.idUsuario) {
         localStorage.setItem("token", response.data.token)
         localStorage.setItem("idUsuario", response.data.idUsuario)
+        localStorage.setItem("tipoPerfil", response.data.tipoPerfil)
       }
 
       swal.fire({
@@ -51,7 +60,11 @@ const TelaLogin = () => {
         text: response.message || "Login realizado com sucesso!",
       })
 
-      navigate("/tela-relato")
+      if (localStorage.getItem("tipoPerfil") === "Manutenção") {
+        navigate("/tela-listagem-chamados")
+      } else {
+        navigate("/tela-relato")
+      }
     } catch (error) {
       swal.fire({
         icon: "error",

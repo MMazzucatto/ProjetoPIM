@@ -65,6 +65,7 @@ export const login = async (req, res) => {
       auth: true,
       token,
       idUsuario: usuario.idUsuario,
+      tipoPerfil: usuario.tipoPerfil,
     })
   } catch (error) {
     res.status(500).json({ error: "Erro no servidor", details: error.message })
