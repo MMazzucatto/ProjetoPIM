@@ -1,37 +1,54 @@
-import React from "react";
-import { useNavigate } from "react-router-dom";
-import MenuInferior from "../MenuInferior/MenuInferior";
-import "./PrivacidadeeSeguranca.css";
+import React from "react"
+import { useNavigate } from "react-router-dom"
+import MenuInferior from "../MenuInferior/MenuInferior"
+import "./PrivacidadeeSeguranca.css"
 
 const PrivacidadeeSeguranca = () => {
-  const navigate = useNavigate();
+  const navigate = useNavigate()
 
   const handleBackClick = () => {
-    window.history.back();
-  };
+    window.history.back()
+  }
+
+  const handleAlterarSenha = () => {
+    navigate("/tela-redefinir-senha")
+  }
+
+  const handleLogoff = () => {
+    localStorage.clear()
+    navigate("/tela-login")
+  }
 
   return (
     <div>
       <header>
-        <img src="/img/LogoZelo+.png" alt="Logo do Via Certa ABC" class="logo" />
+        <img
+          src="/img/LogoZelo+.png"
+          alt="Logo do Via Certa ABC"
+          className="logo"
+        />
       </header>
       <main className="container">
         <div className="btnVoltar">
-          <img src="/img/seta-esquerda.png" class="icones"  onClick={handleBackClick} />
-          <h2 class="tituloPrivacidade">Privacidade e Segurança</h2>
-        </div>
-        <div class="opcoes">
-          <a>Alterar Senha</a>
-          <a>Acesso Biometrico e PIN</a>
-          <a>Permissões do APP</a>
-        </div>
-        <div class="Doar">
-          <h2>Doe e Ajude!</h2>
           <img
-            src="/img/doar.png"
-            class="icones imgDoar"
-            
+            src="/img/seta-esquerda.png"
+            className="icones"
+            onClick={handleBackClick}
+            alt="Voltar"
           />
+          <h2 className="tituloPrivacidade">Privacidade e Segurança</h2>
+        </div>
+
+        <div className="opcoes">
+          <button onClick={handleAlterarSenha}>Alterar Senha</button>
+          <button>Acesso Biométrico e PIN</button>
+          <button>Permissões do APP</button>
+          <button onClick={handleLogoff}>Fazer logoff</button>
+        </div>
+
+        <div className="Doar">
+          <h2>Doe e Ajude!</h2>
+          <img src="/img/doar.png" className="icones imgDoar" alt="Doar" />
         </div>
       </main>
 
@@ -39,6 +56,7 @@ const PrivacidadeeSeguranca = () => {
         <MenuInferior />
       </footer>
     </div>
-  );
-};
-export default PrivacidadeeSeguranca;
+  )
+}
+
+export default PrivacidadeeSeguranca

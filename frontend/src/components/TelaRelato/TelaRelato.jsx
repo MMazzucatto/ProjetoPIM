@@ -21,7 +21,13 @@ const TelaRelato = () => {
       })
       navigate("/tela-login")
     }
-  }, [])
+
+    const tipoPerfil = localStorage.getItem("tipoPerfil")
+
+    if (tipoPerfil === "Manutenção") {
+      navigate("/tela-listagem-chamados")
+    }
+  }, [navigate])
 
   const handleSubmit = async (e) => {
     e.preventDefault()
@@ -55,7 +61,7 @@ const TelaRelato = () => {
     }
 
     try {
-      const response = await cadastroRelato(relato, token)
+      await cadastroRelato(relato, token)
       swal.fire({
         icon: "success",
         title: "Sucesso",
@@ -91,7 +97,9 @@ const TelaRelato = () => {
                 value={categoria}
                 onChange={(e) => setCategoria(e.target.value)}
               >
-                <option value="">Selecione a categoria</option>
+                <option value="" disabled hidden>
+                  Selecione a categoria
+                </option>
                 <option value="Manutenção">Manutenção</option>
                 <option value="Limpeza">Limpeza</option>
                 <option value="Iluminação">Iluminação</option>

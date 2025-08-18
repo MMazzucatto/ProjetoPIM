@@ -11,6 +11,7 @@ import Sobre from "./components/Sobre/Sobre"
 import Notificacoes from "./components/Notificacoes/Notificacoes"
 import PrivacidadeeSeguranca from "./components/PrivacidadeeSeguranca/PrivacidadeeSeguranca"
 import Usuario from "./components/Usuario/Usuario"
+import TelaListagemChamados from "./components/TelaListagemChamados/TelaListagemChamados"
 
 const AppRouter = () => (
   <Router>
@@ -29,6 +30,10 @@ const AppRouter = () => (
         element={<PrivacidadeeSeguranca />}
       />
       <Route path="/usuario" element={<Usuario />} />
+      <Route
+        path="/tela-listagem-chamados"
+        element={<TelaListagemChamados />}
+      />
     </Routes>
   </Router>
 )

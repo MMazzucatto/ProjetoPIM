@@ -1,12 +1,19 @@
-import React from "react"
+import React, { useEffect } from "react"
 import { useNavigate } from "react-router-dom"
 import "./Home.css"
+import { isAuthenticated } from "../../utils/authValidation"
 
 const Home = () => {
   const navigate = useNavigate()
 
   const handleStartClick = () => {
-    navigate("/tela-relato")
+    if (!isAuthenticated()) {
+      navigate("/tela-login")
+    } else if (localStorage.getItem("tipoPerfil") === "Manutenção") {
+      navigate("/tela-listagem-chamados")
+    } else {
+      navigate("/tela-relato")
+    }
   }
 
   return (

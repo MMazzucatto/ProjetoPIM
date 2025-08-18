@@ -7,6 +7,7 @@ import { cadastroUsuario } from "./TelaCadastro.service"
 
 const TelaCadastro = () => {
   const navigate = useNavigate()
+
   const handleStartClick = () => {
     navigate("/tela-login")
   }
@@ -20,14 +21,16 @@ const TelaCadastro = () => {
     document.getElementById("nome").value = ""
     document.getElementById("email").value = ""
     document.getElementById("senha").value = ""
+    document.getElementById("tipoPerfil").value = ""
   }
 
   const criarConta = async () => {
     const nome = document.getElementById("nome").value
     const email = document.getElementById("email").value
     const senha = document.getElementById("senha").value
+    const tipoPerfil = document.getElementById("tipoPerfil").value
 
-    if (!nome || !email || !senha) {
+    if (!nome || !email || !senha || !tipoPerfil) {
       swal.fire({
         icon: "error",
         title: "Erro",
@@ -45,7 +48,7 @@ const TelaCadastro = () => {
     }
 
     try {
-      await cadastroUsuario(nome, email, senha)
+      await cadastroUsuario(nome, email, senha, tipoPerfil)
       handleSuccess()
     } catch (error) {
       swal.fire({
@@ -74,6 +77,14 @@ const TelaCadastro = () => {
               <input id="nome" type="text" placeholder="Nome"></input>
               <input id="email" type="email" placeholder="E-mail"></input>
               <input id="senha" type="password" placeholder="Senha"></input>
+              <select id="tipoPerfil">
+                <option value="" disabled selected hidden>
+                  Tipo de Usuário
+                </option>
+                <option value="Usuario">Usuário</option>
+                <option value="Manutenção">Manutenção</option>
+              </select>
+
               <button type="button" onClick={criarConta}>
                 Criar Conta
               </button>

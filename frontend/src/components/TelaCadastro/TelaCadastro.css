@@ -16,6 +16,18 @@
   cursor: pointer;
   font-weight: 600;
 }
+
+.cadastro-container select {
+  height: 50px;
+  padding: 10px;
+  margin: 10px 0;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: white;
+  font-weight: 500;
+  cursor: pointer;
+}
+
 .cadastro-container input {
   width: 94%;
   padding: 10px;
