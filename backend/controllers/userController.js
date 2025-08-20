@@ -30,7 +30,7 @@ export const createReport = async (req, res) => {
       data: {
         titulo,
         descricao,
-        idUsuario,
+        idUsuario: parseInt(idUsuario),
         idResponsavel: null,
         idStatus: 1,
       },
@@ -41,8 +41,30 @@ export const createReport = async (req, res) => {
       relato: novoRelato,
     })
   } catch (error) {
+    console.log(error)
     res
       .status(500)
       .json({ error: "Erro ao criar relato", details: error.message })
+  }
+}
+
+export const getReports = async (req, res) => {
+  try {
+    const response = await prisma.$queryRaw`
+      select r.*, s."descricaoStatus" from "Relato" r
+      inner join "Status" s
+      on s."idStatus" = r."idStatus"
+    `
+
+    res.status(200).json({
+      message: "Chamados recebidos com sucesso!",
+      reports: response,
+    })
+  } catch (error) {
+    console.log(error)
+    res.status(500).json({
+      error: "Erro ao buscar chamados",
+      details: error.message,
+    })
   }
 }

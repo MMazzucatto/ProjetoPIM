@@ -63,7 +63,7 @@ model Resposta {
 
 model Status {
   idStatus  Int      @id @default(autoincrement())
-  nome      String   @db.VarChar(50)
+  descricaoStatus     String   @db.VarChar(50)
   tabela    String   @db.VarChar(50)
   createdAt DateTime @default(now()) @db.Timestamptz(6)
   updatedAt DateTime @updatedAt @db.Timestamptz(6)
