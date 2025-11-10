@@ -1,0 +1,53 @@
+.adicionar {
+  background-color: #f8f9fa !important;
+}
+
+.icone-adicionar {
+  width:40%;
+ 
+}
+
+.relato-container-usuarios {
+    background: white;
+    padding: 20px;
+    border-radius: 45px;
+    text-align: center;
+    width: 100%;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.iconenometipo {
+    display: flex;
+    align-items: center;
+}
+.iconeexcluir{
+    margin-top:8px;
+}
+
+
+.usuarios-lista {
+  width: 100%;
+  max-height: 430px; /* ou qualquer altura que desejar */
+  overflow-y: auto;
+  overflow-x: hidden;
+  margin-top: 14px;
+}
+
+.adicionar-usuario-container {
+   text-align: right !important;
+   width: 100%;
+}
+.icone-adicionar {
+    width: 50px;
+}
+
+.voltar-listar-usuarios{
+    cursor: pointer;
+    margin-right: 10px;
+}
+
+.titulo-listagem-usuarios{
+    margin-top: 3px !important;
+} 

@@ -1,0 +1,58 @@
+.formulario {
+  display: block;
+  flex-direction: column;
+  gap: 15px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.botoes-perfil {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+.botao-perfil {
+  width: 120px;
+  padding: 10px;
+  background-color: #4169e1;
+  color: black;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+}
+
+.input-perfil input {
+  width: 94%;
+  padding: 10px;
+  margin: 10px 0;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  align-items: center !important;
+}
+
+.container-adicionar-usuario {
+    margin-top: 50px !important;
+}
+.input-perfil{
+    text-align: center;
+}
+
+.btnCadastrar{
+    margin-top:80px;
+}
+
+.botao-perfil {
+  padding: 10px 20px;
+  border: 1px solid #ccc;
+  background-color: white;
+  cursor: pointer;
+  border-radius: 8px;
+  transition: 0.2s;
+}
+
+.botao-perfil.ativo {
+  background-color: #007bff;
+  color: white;
+  border-color: #007bff;
+}

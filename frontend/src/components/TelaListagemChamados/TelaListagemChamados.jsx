@@ -1,124 +1,124 @@
-import React, { useState, useEffect } from "react"
-import { useNavigate } from "react-router-dom"
-import MenuInferior from "../MenuInferior/MenuInferior"
-import "./TelaListagemChamados.css"
+import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import MenuInferior from "../MenuInferior/MenuInferior";
+import "./TelaListagemChamados.css";
 import {
   getReports,
   getStatusToReports,
   saveResposta,
   deleteReport,
-} from "./TelaListagemChamados.service"
-import Modal from "../Modal/Modal"
-import { act } from "react"
-import swal from "sweetalert2"
+} from "./TelaListagemChamados.service";
+import Modal from "../Modal/Modal";
+import { act } from "react";
+import swal from "sweetalert2";
 
 const TelaListagemChamados = () => {
-  const [reports, setReports] = useState([])
-  const [loading, setLoading] = useState(true)
-  const [error, setError] = useState(null)
-  const [selectedReportId, setSelectedReportId] = useState(null)
-  const [isModalOpen, setIsModalOpen] = useState(false)
-  const [actualReport, setActualReport] = useState(null)
-  const [statusList, setStatusList] = useState([])
-  const [newResposta, setNewResposta] = useState("")
-  const [newStatusId, setNewStatusId] = useState("")
+  const [reports, setReports] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+  const [selectedReportId, setSelectedReportId] = useState(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [actualReport, setActualReport] = useState(null);
+  const [statusList, setStatusList] = useState([]);
+  const [newResposta, setNewResposta] = useState("");
+  const [newStatusId, setNewStatusId] = useState("");
 
   useEffect(() => {
     const fetchReports = async () => {
       try {
-        setLoading(true)
+        setLoading(true);
 
         const [reportsResponse, statusResponse] = await Promise.all([
           getReports(),
           getStatusToReports(),
-        ])
+        ]);
 
-        console.log("valor da statusResponse", statusResponse)
+        console.log("valor da statusResponse", statusResponse);
 
-        setReports(reportsResponse)
-        setStatusList(statusResponse)
+        setReports(reportsResponse);
+        setStatusList(statusResponse);
       } catch (error) {
         setError(
           "Não foi possível carregar os chamados. Tente novamente mais tarde."
-        )
-        console.error(error)
+        );
+        console.error(error);
       } finally {
-        setLoading(false)
+        setLoading(false);
       }
-    }
+    };
 
-    fetchReports()
-  }, [])
+    fetchReports();
+  }, []);
 
   const handleOpenModal = (report) => {
-    setActualReport(report)
-    setNewStatusId(report.idStatus)
-    setIsModalOpen(true)
-  }
+    setActualReport(report);
+    setNewStatusId(report.idStatus);
+    setIsModalOpen(true);
+  };
 
   const handleCloseModal = () => {
-    setIsModalOpen(false)
-    setActualReport(null)
-    setNewResposta("")
-    setNewStatusId("")
-  }
+    setIsModalOpen(false);
+    setActualReport(null);
+    setNewResposta("");
+    setNewStatusId("");
+  };
 
   const handleSubmitForm = async (e) => {
-    e.preventDefault()
+    e.preventDefault();
     if (!newResposta.trim() || !newStatusId) {
-      alert("Por favor, preencha todos os campos!")
-      return
+      alert("Por favor, preencha todos os campos!");
+      return;
     }
 
     try {
-      await saveResposta(actualReport.idRelato, newResposta, newStatusId)
-      handleCloseModal()
+      await saveResposta(actualReport.idRelato, newResposta, newStatusId);
+      handleCloseModal();
 
       swal.fire({
         icon: "success",
         title: "Sucesso",
         text: "Resposta recebida!",
-      })
+      });
 
-      const response = await getReports()
-      setReports(response)
+      const response = await getReports();
+      setReports(response);
     } catch (error) {
       swal.fire({
         icon: "error",
         title: "Erro",
         text: "Algo deu errado!",
-      })
+      });
     }
-  }
+  };
 
   const handleSelecionarChamado = (id) => {
     if (selectedReportId === id) {
-      setSelectedReportId(null)
+      setSelectedReportId(null);
     } else {
-      setSelectedReportId(id)
+      setSelectedReportId(id);
     }
-  }
+  };
 
   const handleDeletar = async (idRelato, e) => {
-    e.stopPropagation()
+    e.stopPropagation();
     try {
-      await deleteReport(idRelato)
+      await deleteReport(idRelato);
       swal.fire({
         icon: "success",
         title: "Sucesso",
         text: "Chamado deletado!",
-      })
+      });
 
-      const response = await getReports()
-      setReports(response)
+      const response = await getReports();
+      setReports(response);
     } catch (error) {
       swal.fire({
         icon: "error",
         title: "Erro",
         text: "Algo deu errado!",
-      })
+      });
     }
-  }
+  };
 
   const dateFormatter = (data) => {
     return new Intl.DateTimeFormat("pt-BR", {
@@ -127,20 +127,20 @@ const TelaListagemChamados = () => {
       year: "numeric",
       hour: "2-digit",
       minute: "2-digit",
-    }).format(new Date(data))
-  }
+    }).format(new Date(data));
+  };
 
   const renderContent = () => {
     if (loading) {
-      return <p>Carregando relatos...</p>
+      return <p>Carregando relatos...</p>;
     }
 
     if (error) {
-      return <p className="error-message">{error}</p>
+      return <p className="error-message">{error}</p>;
     }
 
     if (!reports || reports.length === 0) {
-      return <p>Nenhum chamado encontrado.</p>
+      return <p>Nenhum chamado encontrado.</p>;
     }
 
     return (
@@ -182,8 +182,8 @@ const TelaListagemChamados = () => {
                   <button
                     className="botao-editar"
                     onClick={(e) => {
-                      e.stopPropagation()
-                      handleOpenModal(report)
+                      e.stopPropagation();
+                      handleOpenModal(report);
                     }}
                   >
                     Editar
@@ -200,9 +200,12 @@ const TelaListagemChamados = () => {
           </div>
         ))}
       </div>
-    )
-  }
+    );
+  };
 
+  const handleBackClick = () => {
+    window.history.back();
+  };
   return (
     <div>
       <header>
@@ -211,7 +214,15 @@ const TelaListagemChamados = () => {
       <main className="container">
         <div className="listagem-container">
           <div>
-            <h1>Relatos cadastrados:</h1>
+            <div className="titulo-e-voltar">
+              <img
+                src="/img/seta-esquerda.png"
+                className="icones icone-voltar"
+                onClick={handleBackClick}
+                alt="Voltar"
+              />
+              <h1>Relatos cadastrados:</h1>
+            </div>
             {renderContent()}
           </div>
         </div>
@@ -266,7 +277,7 @@ const TelaListagemChamados = () => {
         )}
       </Modal>
     </div>
-  )
-}
+  );
+};
 
-export default TelaListagemChamados
+export default TelaListagemChamados;

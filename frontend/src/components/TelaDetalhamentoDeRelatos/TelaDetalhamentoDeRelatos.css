@@ -1,0 +1,77 @@
+.logo{
+    width: 50% !important;
+    margin-top: 30px;
+}
+
+.relato-container-ch {
+  background: white;
+  padding: 20px;
+  border-radius: 45px;
+  text-align: center;
+  width: 100%;
+  margin-bottom: 10px;
+}
+.relato-container-loc {
+  background: white;
+  padding: 20px;
+  border-radius: 45px;
+  text-align: center;
+  width: 100%;
+  margin-bottom: 5px;
+  display: flex;
+}
+.relato-container-temp {
+  background: white;
+  padding: 20px;
+  border-radius: 45px;
+  text-align: center;
+  width: 100%;
+  margin-bottom: 5px;
+  display: flex;
+}
+.relato-container-tec {
+  background: white;
+  padding: 20px;
+  border-radius: 45px;
+  text-align: center;
+  width: 100%;
+  margin-bottom: 0px;
+  display: flex;
+}
+
+
+.titulo{
+    font-size: 20px !important;
+    margin-top:0px !important;
+}
+.titulo1{
+    font-size: 20px !important;
+    margin-top:3px !important;
+    margin-left: 10px !important;
+}
+.icone{
+    align-items: center;
+    margin-right: 10px;
+    margin-top: 5px
+}
+.imagemChamado{
+    width: 80%;
+    margin-bottom: 10px;
+
+}
+
+.desc{
+    font-size: 15px !important;
+    text-align: justify !important;
+}
+
+main{
+    margin-top: 0px !important;
+}
+.btnetitulo{
+    display: flex;
+}
+
+.imagemRelato{
+text-align: center;
+}
