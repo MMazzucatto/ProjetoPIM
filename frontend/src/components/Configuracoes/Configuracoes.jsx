@@ -32,11 +32,6 @@ const Configuracoes = () => {
       </header>
       <main className="container">
         <div className="btnVoltar">
-          <img
-            src="/img/seta-esquerda.png"
-            class="icones"
-            onClick={handleBackClick}
-          />
           <h2 class="tituloConfiguracoes">Configurações</h2>
         </div>{" "}
         <div class="opcoes">

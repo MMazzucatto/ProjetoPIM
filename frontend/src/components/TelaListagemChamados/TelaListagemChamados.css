@@ -142,3 +142,12 @@
   background-color: #4a90e2;
   color: white;
 }
+
+.titulo-e-voltar{
+  display: flex;
+}
+
+.icone-voltar{
+  cursor: pointer;
+  margin-right: 10px;
+}

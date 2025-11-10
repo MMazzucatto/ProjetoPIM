@@ -117,13 +117,33 @@ const TelaRelato = () => {
                 onChange={(e) => setConteudo(e.target.value)}
               />
 
-              <button id="enviarRelato" type="submit">
-                Enviar Relato
-              </button>
             </form>
           </div>
         </main>
       </div>
+    <main className="localizacao-input">
+       <div className="container">
+          <div className="relato-container">
+            <h2>Localização</h2>
+            <form id="cadastrarRelato" onSubmit={handleSubmit}>
+
+              <input
+                id="conteudo"
+                placeholder="Informe a localização do ocorrido"
+                value={conteudo}
+                onChange={(e) => setConteudo(e.target.value)}
+              />
+
+            </form>
+          </div>
+      </div>
+      </main>
+          
+            <div class="container" align="center">
+              <button id="enviarRelato" type="submit">
+                Enviar Relato
+              </button>
+              </div>
       <footer>
         <MenuInferior />
       </footer>

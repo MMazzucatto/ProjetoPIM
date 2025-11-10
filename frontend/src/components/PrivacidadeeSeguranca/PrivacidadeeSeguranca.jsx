@@ -1,24 +1,36 @@
-import React from "react"
-import { useNavigate } from "react-router-dom"
-import MenuInferior from "../MenuInferior/MenuInferior"
-import "./PrivacidadeeSeguranca.css"
+import React from "react";
+import { useNavigate } from "react-router-dom";
+import MenuInferior from "../MenuInferior/MenuInferior";
+import mudarSenha from '../../assets/mudar-senha.png';
+import acessoBiometrico from '../../assets/biometrico.png';
+import meusChamadosAtivos from '../../assets/servico-de-chamada.png';
+import historicoChamados from '../../assets/historia.png';
+import perfilUsuario from '../../assets/do-utilizador.png';
+import logoffIcone from '../../assets/sair.png';
+import "./PrivacidadeeSeguranca.css";
 
 const PrivacidadeeSeguranca = () => {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
-  const handleBackClick = () => {
-    window.history.back()
-  }
-
+  const handleVisualizarPerfilClick = () => {
+    navigate("/Usuario");
+  };
   const handleAlterarSenha = () => {
-    navigate("/tela-redefinir-senha")
-  }
+    navigate("/tela-redefinir-senha");
+  };
+  const handleHistoricoChamados = () => {
+    navigate("/tela-historico-de-relatos");
+  };
 
   const handleLogoff = () => {
-    localStorage.clear()
-    navigate("/tela-login")
-  }
+    localStorage.clear();
+    navigate("/tela-login");
+  };
 
+  const handleListagemChamados = () => {
+    localStorage.clear();
+    navigate("/tela-listagem-chamados");
+  };
   return (
     <div>
       <header>
@@ -30,20 +42,16 @@ const PrivacidadeeSeguranca = () => {
       </header>
       <main className="container">
         <div className="btnVoltar">
-          <img
-            src="/img/seta-esquerda.png"
-            className="icones"
-            onClick={handleBackClick}
-            alt="Voltar"
-          />
           <h2 className="tituloPrivacidade">Privacidade e Segurança</h2>
         </div>
 
         <div className="opcoes">
-          <button onClick={handleAlterarSenha}>Alterar Senha</button>
-          <button>Acesso Biométrico e PIN</button>
-          <button>Permissões do APP</button>
-          <button onClick={handleLogoff}>Fazer logoff</button>
+          <a onClick={handleAlterarSenha}><img src={mudarSenha} alt="Alterar Senha" className="icones" />Alterar Senha</a>
+          <a ><img src={acessoBiometrico} alt="Acesso Biométrico e PIN" className="icones" /> Acesso Biométrico e PIN</a>
+          <a onClick={handleListagemChamados}><img src={meusChamadosAtivos} alt="Acesso Biométrico e PIN" className="icones" />Meus Chamados Ativos</a>
+          <a onClick={handleHistoricoChamados}><img src={historicoChamados} alt="Acesso Biométrico e PIN" className="icones" />Histórico de Chamados </a>
+          <a onClick={handleVisualizarPerfilClick}><img src={perfilUsuario} alt="Acesso Biométrico e PIN" className="icones" />Meu Perfil</a>
+          <a onClick={handleLogoff}><img src={logoffIcone} alt="Acesso Biométrico e PIN" className="icones" />Fazer logoff</a>
         </div>
 
         <div className="Doar">
@@ -56,7 +64,7 @@ const PrivacidadeeSeguranca = () => {
         <MenuInferior />
       </footer>
     </div>
-  )
-}
+  );
+};
 
-export default PrivacidadeeSeguranca
+export default PrivacidadeeSeguranca;
