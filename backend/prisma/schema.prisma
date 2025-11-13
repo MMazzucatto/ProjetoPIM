@@ -41,6 +41,7 @@ model Relato {
   Responsavel    Responsavel? @relation(fields: [idResponsavel], references: [idResponsavel], onDelete: NoAction, onUpdate: NoAction, map: "fk_idresponsavel")
   Status         Status       @relation(fields: [idStatus], references: [idStatus], onDelete: NoAction, onUpdate: NoAction, map: "fk_idstatus")
   Resposta       Resposta[]
+  imagem         String?      @db.VarChar(500)
 }
 
 model Responsavel {

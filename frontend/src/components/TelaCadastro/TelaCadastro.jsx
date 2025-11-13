@@ -4,6 +4,7 @@ import MenuInferior from "../MenuInferior/MenuInferior"
 import "./TelaCadastro.css"
 import swal from "sweetalert2"
 import { cadastroUsuario } from "./TelaCadastro.service"
+import logo from "../../assets/LogoZelo+.png"
 
 const TelaCadastro = () => {
   const navigate = useNavigate()
@@ -62,11 +63,7 @@ const TelaCadastro = () => {
   return (
     <div>
       <header>
-        <img
-          src="/img/LogoZelo+.png"
-          alt="Logo do Via Certa ABC"
-          className="logo"
-        />
+        <img src={logo} alt="Logo do Via Certa ABC" className="logo" />
       </header>
 
       <div className="container">

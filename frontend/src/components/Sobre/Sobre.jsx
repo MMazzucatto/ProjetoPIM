@@ -1,17 +1,16 @@
-import React from "react";
-import { useNavigate } from "react-router-dom";
-import MenuInferior from "../MenuInferior/MenuInferior";
-import "./Sobre.css";
+import React from "react"
+import { useNavigate } from "react-router-dom"
+import MenuInferior from "../MenuInferior/MenuInferior"
+import "./Sobre.css"
+import logo from "../../assets/LogoZelo+.png"
 
 const Sobre = () => {
-
   return (
     <div>
       <header>
-        <img src="/img/LogoZelo+.png" alt="Logo do Via Certa ABC" class="logo" />
+        <img src={logo} alt="Logo do Via Certa ABC" class="logo" />
       </header>
       <main className="sobre">
-
         <div className="sobre-container">
           <div>
             <h1>Sobre nós:</h1>
@@ -33,6 +32,6 @@ const Sobre = () => {
         <MenuInferior />
       </footer>
     </div>
-  );
-};
-export default Sobre;
+  )
+}
+export default Sobre

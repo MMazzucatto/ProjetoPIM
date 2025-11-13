@@ -1,10 +1,17 @@
 import axios from "axios"
 
-const API_URL = "http://localhost:3000"
+const API_URL = "https://downtroddenly-undecreed-herschel.ngrok-free.dev"
+// const API_URL = "http://localhost:3000"
 
 export const getReports = async () => {
   try {
-    const response = await axios.get(`${API_URL}/users/getReports`)
+    const response = await axios.get(`${API_URL}/users/getReports`, {
+      headers: {
+        "ngrok-skip-browser-warning": "true",
+      },
+    })
+
+    console.log(response.data)
 
     return response.data.reports
   } catch (error) {
@@ -13,7 +20,11 @@ export const getReports = async () => {
 }
 
 export const getStatusToReports = async () => {
-  const response = await axios.get(`${API_URL}/users/getStatusToReports`)
+  const response = await axios.get(`${API_URL}/users/getStatusToReports`, {
+    headers: {
+      "ngrok-skip-browser-warning": "true",
+    },
+  })
 
   return response.data.statusList
 }

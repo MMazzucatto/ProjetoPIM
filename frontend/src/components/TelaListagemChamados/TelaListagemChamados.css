@@ -7,23 +7,43 @@
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
 }
 
-.opcoes-chamado {
+.opcoes-chamado-completo {
   margin-top: 16px;
   padding-top: 16px;
   border-top: 1px solid #f0f0f0;
   display: flex;
-  justify-content: center;
-  gap: 12px;
+  flex-direction: column;
+  gap: 10px;
+  align-items: stretch;
 }
 
-.opcoes-chamado button {
+.opcoes-chamado-secundario {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  width: 100%;
+}
+
+.opcoes-chamado-secundario button {
+  flex-grow: 1;
+}
+
+.opcoes-chamado-completo button {
   padding: 10px 20px;
   border: none;
   border-radius: 6px;
   font-size: 14px;
   font-weight: 600;
   color: white;
-  width: auto;
+  width: 100%;
+  cursor: pointer;
+}
+
+.botao-imagem {
+  background-color: #5cb85c;
+  color: white;
+  padding: 12px 20px;
+  font-size: 16px;
 }
 
 .botao-editar {
@@ -76,12 +96,7 @@
   padding: 10px 0;
 }
 
-.opcoes-chamado {
-  margin-top: 20px;
-  padding-top: 0;
-  border-top: none;
-}
-
+/* Classes de Modal */
 .modal-form {
   display: flex;
   flex-direction: column;
@@ -143,11 +158,19 @@
   color: white;
 }
 
-.titulo-e-voltar{
+.titulo-e-voltar {
   display: flex;
+  align-items: center;
 }
 
-.icone-voltar{
+.icone-voltar {
   cursor: pointer;
   margin-right: 10px;
+  height: 24px;
+}
+
+.swal2-image-custom {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
 }

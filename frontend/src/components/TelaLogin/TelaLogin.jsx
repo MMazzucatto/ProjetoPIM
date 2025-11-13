@@ -5,6 +5,8 @@ import "./TelaLogin.css"
 import swal from "sweetalert2"
 import { isAuthenticated } from "../../utils/authValidation.js"
 import { login } from "./TelaLogin.service"
+import logo from "../../assets/LogoZelo+.png"
+import logoGoogle from "../../assets/LogoGoogle.png"
 
 const TelaLogin = () => {
   const navigate = useNavigate()
@@ -77,11 +79,7 @@ const TelaLogin = () => {
   return (
     <div>
       <header>
-        <img
-          src="/img/LogoZelo+.png"
-          alt="Logo do Via Certa ABC"
-          class="logo"
-        />
+        <img src={logo} alt="Logo do Via Certa ABC" class="logo" />
       </header>
       <div class="container">
         <main>
@@ -94,14 +92,6 @@ const TelaLogin = () => {
                 Entrar
               </button>
             </form>
-            <div class="google">
-              Entrar com sua conta Google
-              <img
-                class="LogoGoogle"
-                src="/img/LogoGoogle.png"
-                alt="Logo do Google"
-              />
-            </div>
           </div>
           <div class="forgot-password" onClick={handleForgotPasswordClick}>
             Esqueci minha senha!

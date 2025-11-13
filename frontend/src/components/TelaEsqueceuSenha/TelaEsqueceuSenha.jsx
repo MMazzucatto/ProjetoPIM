@@ -1,45 +1,45 @@
-import React from "react";
-import { useNavigate } from "react-router-dom";
-import MenuInferior from "../MenuInferior/MenuInferior";
-import swal from "sweetalert2";
-import "./TelaEsqueceuSenha.css";
+import React from "react"
+import { useNavigate } from "react-router-dom"
+import MenuInferior from "../MenuInferior/MenuInferior"
+import swal from "sweetalert2"
+import "./TelaEsqueceuSenha.css"
+import logo from "../../assets/LogoZelo+.png"
 
 const TelaEsqueceuSenha = () => {
-  const navigate = useNavigate();
+  const navigate = useNavigate()
 
   const handleRedefinirSenha = () => {
-    const email = document.getElementById("email").value;
+    const email = document.getElementById("email").value
 
     if (!email) {
       swal.fire({
         icon: "error",
         title: "Erro",
         text: "Preencha o campo E-mail!",
-      });
-      return;
+      })
+      return
     }
 
-      if (!email.includes("@") || !email.includes(".")) {
-        swal.fire({
-          icon: "error",
-          title: "Erro",
-          text: "Por favor, insira um e-mail válido.",
-        });
-        return;
-      }
+    if (!email.includes("@") || !email.includes(".")) {
+      swal.fire({
+        icon: "error",
+        title: "Erro",
+        text: "Por favor, insira um e-mail válido.",
+      })
+      return
+    }
 
-      navigate("/tela-redefinir-senha");
-
-  };
+    navigate("/tela-redefinir-senha")
+  }
 
   const handleLogin = () => {
-    navigate("/tela-login");
-  };
+    navigate("/tela-login")
+  }
 
   return (
     <div>
       <header>
-        <img src="/img/LogoZelo+.png" alt="Logo do Via Certa ABC" class="logo" />
+        <img src={logo} alt="Logo do Via Certa ABC" class="logo" />
       </header>
 
       <div class="container">
@@ -68,7 +68,7 @@ const TelaEsqueceuSenha = () => {
         <MenuInferior />
       </footer>
     </div>
-  );
-};
+  )
+}
 
-export default TelaEsqueceuSenha;
+export default TelaEsqueceuSenha

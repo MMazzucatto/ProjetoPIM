@@ -1,16 +1,30 @@
 import { PrismaClient } from "@prisma/client"
 import jwt from "jsonwebtoken"
+import multer from "multer"
+import path from "path"
 
 const prisma = new PrismaClient()
 
+const storage = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, "uploads/")
+  },
+  filename: function (req, file, cb) {
+    const uniqueSuffix = Date.now() + "-" + Math.round(Math.random() * 1e9)
+    cb(null, uniqueSuffix + path.extname(file.originalname))
+  },
+})
+
+const upload = multer({ storage: storage })
+
 export const createReport = async (req, res) => {
   const { titulo, descricao, idUsuario } = req.body
+  const token = req.headers.authorization?.split(" ")[1]
 
   if (!titulo || !descricao || !idUsuario) {
     return res.status(400).json({ error: "Todos os campos são obrigatórios" })
   }
 
-  const token = req.headers.authorization?.split(" ")[1]
   if (!token) {
     return res
       .status(403)
@@ -26,11 +40,15 @@ export const createReport = async (req, res) => {
         .json({ error: "Token inválido para este usuário!" })
     }
 
+    // Pega o caminho da imagem, se houver
+    const imagemPath = req.file ? req.file.path : null
+
     const novoRelato = await prisma.relato.create({
       data: {
         titulo,
         descricao,
         idUsuario: parseInt(idUsuario),
+        imagem: imagemPath, // salva o caminho da imagem no banco
         idResponsavel: null,
         idStatus: 1,
       },
@@ -66,7 +84,6 @@ export const getReports = async (req, res) => {
         rel."createdAt" DESC,
         res."createdAt" ASC;
     `
-    console.log(flatResponse)
 
     const reportsMap = new Map()
 
@@ -85,6 +102,7 @@ export const getReports = async (req, res) => {
           descricaoStatus: row.descricaoStatus,
           nomeResponsavel: row.nomeResponsavel,
           respostas: [],
+          imagem: row.imagem?.replace(/\\/g, "/"),
         })
       }
 

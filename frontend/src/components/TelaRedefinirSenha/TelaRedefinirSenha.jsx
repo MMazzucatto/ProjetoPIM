@@ -1,46 +1,44 @@
-import React from "react";
-import { useNavigate } from "react-router-dom";
-import MenuInferior from "../MenuInferior/MenuInferior";
-import swal from "sweetalert2";
-import "./TelaRedefinirSenha.css";
+import React from "react"
+import { useNavigate } from "react-router-dom"
+import MenuInferior from "../MenuInferior/MenuInferior"
+import swal from "sweetalert2"
+import "./TelaRedefinirSenha.css"
+import logo from "../../assets/LogoZelo+.png"
 
 const TelaRedefinirSenha = () => {
-  const navigate = useNavigate();
+  const navigate = useNavigate()
 
   const handleLogin = () => {
-    navigate("/tela-login");
-  };
+    navigate("/tela-login")
+  }
 
   function ConfirmarSenha() {
+    var novaSenha = document.getElementById("nova-senha").value
+    var confirmarSenha = document.getElementById("confirmar-senha").value
 
-    var novaSenha = document.getElementById("nova-senha").value;
-    var confirmarSenha = document.getElementById("confirmar-senha").value;
-
-    if (!novaSenha  || !confirmarSenha) {
+    if (!novaSenha || !confirmarSenha) {
       swal.fire({
         icon: "error",
         title: "Erro",
         text: "Preencha todos os campos!",
-      });
-      return;
+      })
+      return
     }
 
-    if(novaSenha !== confirmarSenha) {
+    if (novaSenha !== confirmarSenha) {
       swal.fire({
         icon: "error",
         title: "Erro",
         text: "As senhas não coincidem!",
-      });
-      return;
+      })
+      return
     }
-
   }
-
 
   return (
     <div>
       <header>
-        <img src="/img/LogoZelo+.png" alt="Logo do Via Certa ABC" class="logo" />
+        <img src={logo} alt="Logo do Via Certa ABC" class="logo" />
       </header>
 
       <div class="container">
@@ -48,9 +46,19 @@ const TelaRedefinirSenha = () => {
           <div className="RedefinirSenha-container">
             <h1>Redefinir Senha</h1>
             <form>
-                <input id="nova-senha" type="password" placeholder="Nova Senha"></input>
-                <input id="confirmar-senha" type="password" placeholder="Confirme sua Senha"></input>
-              <button type="button" onClick={ConfirmarSenha}>Confirmar</button>
+              <input
+                id="nova-senha"
+                type="password"
+                placeholder="Nova Senha"
+              ></input>
+              <input
+                id="confirmar-senha"
+                type="password"
+                placeholder="Confirme sua Senha"
+              ></input>
+              <button type="button" onClick={ConfirmarSenha}>
+                Confirmar
+              </button>
             </form>
           </div>
           <div class="forgot-password" onClick={handleLogin}>
@@ -62,7 +70,7 @@ const TelaRedefinirSenha = () => {
         <MenuInferior />
       </footer>
     </div>
-  );
-};
+  )
+}
 
-export default TelaRedefinirSenha;
+export default TelaRedefinirSenha

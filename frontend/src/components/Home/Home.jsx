@@ -2,6 +2,7 @@ import React, { useEffect } from "react"
 import { useNavigate } from "react-router-dom"
 import "./Home.css"
 import { isAuthenticated } from "../../utils/authValidation"
+import logo from "../../assets/LogoZeloPlus.jpg"
 
 const Home = () => {
   const navigate = useNavigate()
@@ -19,7 +20,7 @@ const Home = () => {
   return (
     <div className="home-container">
       <header className="header">
-        <img src="/img/LogoZeloPlus.jpg" alt="Logo do Via Certa ABC" />
+        <img src={logo} alt="Logo do Via Certa ABC" />
       </header>
       <div>
         <main className="textoZeloPlus">
