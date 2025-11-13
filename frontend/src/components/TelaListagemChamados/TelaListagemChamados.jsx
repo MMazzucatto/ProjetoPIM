@@ -1,124 +1,151 @@
-import React, { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
-import MenuInferior from "../MenuInferior/MenuInferior";
-import "./TelaListagemChamados.css";
+import React, { useState, useEffect } from "react"
+import MenuInferior from "../MenuInferior/MenuInferior"
+import "./TelaListagemChamados.css"
 import {
   getReports,
   getStatusToReports,
   saveResposta,
   deleteReport,
-} from "./TelaListagemChamados.service";
-import Modal from "../Modal/Modal";
-import { act } from "react";
-import swal from "sweetalert2";
+} from "./TelaListagemChamados.service"
+import Modal from "../Modal/Modal"
+import { act } from "react"
+import swal from "sweetalert2"
 
 const TelaListagemChamados = () => {
-  const [reports, setReports] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
-  const [selectedReportId, setSelectedReportId] = useState(null);
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const [actualReport, setActualReport] = useState(null);
-  const [statusList, setStatusList] = useState([]);
-  const [newResposta, setNewResposta] = useState("");
-  const [newStatusId, setNewStatusId] = useState("");
+  const [reports, setReports] = useState([])
+  const [loading, setLoading] = useState(true)
+  const [error, setError] = useState(null)
+  const [selectedReportId, setSelectedReportId] = useState(null)
+  const [isModalOpen, setIsModalOpen] = useState(false)
+  const [actualReport, setActualReport] = useState(null)
+  const [statusList, setStatusList] = useState([])
+  const [newResposta, setNewResposta] = useState("")
+  const [newStatusId, setNewStatusId] = useState("")
+
+  const API_URL = "https://downtroddenly-undecreed-herschel.ngrok-free.dev"
+  // const API_URL = "http://localhost:3000"
 
   useEffect(() => {
     const fetchReports = async () => {
       try {
-        setLoading(true);
+        setLoading(true)
 
         const [reportsResponse, statusResponse] = await Promise.all([
           getReports(),
           getStatusToReports(),
-        ]);
+        ])
 
-        console.log("valor da statusResponse", statusResponse);
-
-        setReports(reportsResponse);
-        setStatusList(statusResponse);
+        setReports(reportsResponse)
+        setStatusList(statusResponse)
       } catch (error) {
         setError(
           "Não foi possível carregar os chamados. Tente novamente mais tarde."
-        );
-        console.error(error);
+        )
+        console.error(error)
       } finally {
-        setLoading(false);
+        setLoading(false)
       }
-    };
+    }
 
-    fetchReports();
-  }, []);
+    fetchReports()
+  }, [])
 
   const handleOpenModal = (report) => {
-    setActualReport(report);
-    setNewStatusId(report.idStatus);
-    setIsModalOpen(true);
-  };
+    setActualReport(report)
+    setNewStatusId(report.idStatus)
+    setIsModalOpen(true)
+  }
 
   const handleCloseModal = () => {
-    setIsModalOpen(false);
-    setActualReport(null);
-    setNewResposta("");
-    setNewStatusId("");
-  };
+    setIsModalOpen(false)
+    setActualReport(null)
+    setNewResposta("")
+    setNewStatusId("")
+  }
 
   const handleSubmitForm = async (e) => {
-    e.preventDefault();
+    e.preventDefault()
     if (!newResposta.trim() || !newStatusId) {
-      alert("Por favor, preencha todos os campos!");
-      return;
+      alert("Por favor, preencha todos os campos!")
+      return
     }
 
     try {
-      await saveResposta(actualReport.idRelato, newResposta, newStatusId);
-      handleCloseModal();
+      await saveResposta(actualReport.idRelato, newResposta, newStatusId)
+      handleCloseModal()
 
       swal.fire({
         icon: "success",
         title: "Sucesso",
         text: "Resposta recebida!",
-      });
+      })
 
-      const response = await getReports();
-      setReports(response);
+      const response = await getReports()
+      alert(response)
+      setReports(response)
     } catch (error) {
       swal.fire({
         icon: "error",
         title: "Erro",
         text: "Algo deu errado!",
-      });
+      })
     }
-  };
+  }
 
   const handleSelecionarChamado = (id) => {
     if (selectedReportId === id) {
-      setSelectedReportId(null);
+      setSelectedReportId(null)
     } else {
-      setSelectedReportId(id);
+      setSelectedReportId(id)
     }
-  };
+  }
 
   const handleDeletar = async (idRelato, e) => {
-    e.stopPropagation();
+    e.stopPropagation()
     try {
-      await deleteReport(idRelato);
+      await deleteReport(idRelato)
       swal.fire({
         icon: "success",
         title: "Sucesso",
         text: "Chamado deletado!",
-      });
+      })
 
-      const response = await getReports();
-      setReports(response);
+      const response = await getReports()
+      setReports(response)
     } catch (error) {
       swal.fire({
         icon: "error",
         title: "Erro",
         text: "Algo deu errado!",
-      });
+      })
     }
-  };
+  }
+
+  const handleExibirImagem = async (urlImagem, e) => {
+    e.stopPropagation()
+
+    if (!urlImagem) {
+      swal.fire({
+        icon: "info",
+        title: "Imagem não disponível",
+        text: "Nenhuma imagem foi anexada a este chamado (ou a URL está vazia).",
+      })
+      return
+    }
+
+    const urlDaImagem = `${API_URL}/${urlImagem}`
+
+    swal.fire({
+      title: "Evidência do Chamado",
+      imageUrl: urlDaImagem,
+      imageAlt: "Evidência do chamado",
+      showConfirmButton: false,
+      showCloseButton: true,
+      customClass: {
+        image: "swal2-image-custom",
+      },
+    })
+  }
 
   const dateFormatter = (data) => {
     return new Intl.DateTimeFormat("pt-BR", {
@@ -127,20 +154,20 @@ const TelaListagemChamados = () => {
       year: "numeric",
       hour: "2-digit",
       minute: "2-digit",
-    }).format(new Date(data));
-  };
+    }).format(new Date(data))
+  }
 
   const renderContent = () => {
     if (loading) {
-      return <p>Carregando relatos...</p>;
+      return <p>Carregando relatos...</p>
     }
 
     if (error) {
-      return <p className="error-message">{error}</p>;
+      return <p className="error-message">{error}</p>
     }
 
     if (!reports || reports.length === 0) {
-      return <p>Nenhum chamado encontrado.</p>;
+      return <p>Nenhum chamado encontrado.</p>
     }
 
     return (
@@ -178,34 +205,43 @@ const TelaListagemChamados = () => {
                   )}
                 </div>
 
-                <div className="opcoes-chamado">
+                <div className="opcoes-chamado-completo">
                   <button
-                    className="botao-editar"
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      handleOpenModal(report);
-                    }}
+                    className="botao-imagem"
+                    onClick={(e) => handleExibirImagem(report.imagem, e)}
                   >
-                    Editar
+                    Exibir Imagem do Chamado
                   </button>
-                  <button
-                    className="botao-deletar"
-                    onClick={(e) => handleDeletar(report.idRelato, e)}
-                  >
-                    Deletar
-                  </button>
+
+                  <div className="opcoes-chamado-secundario">
+                    <button
+                      className="botao-editar"
+                      onClick={(e) => {
+                        e.stopPropagation()
+                        handleOpenModal(report)
+                      }}
+                    >
+                      Editar
+                    </button>
+                    <button
+                      className="botao-deletar"
+                      onClick={(e) => handleDeletar(report.idRelato, e)}
+                    >
+                      Deletar
+                    </button>
+                  </div>
                 </div>
               </div>
             )}
           </div>
         ))}
       </div>
-    );
-  };
+    )
+  }
 
   const handleBackClick = () => {
-    window.history.back();
-  };
+    window.history.back()
+  }
   return (
     <div>
       <header>
@@ -277,7 +313,7 @@ const TelaListagemChamados = () => {
         )}
       </Modal>
     </div>
-  );
-};
+  )
+}
 
-export default TelaListagemChamados;
+export default TelaListagemChamados

@@ -1,9 +1,25 @@
-import React from "react"
+import React, { useEffect, useState } from "react"
 import { useNavigate } from "react-router-dom"
 import MenuInferior from "../MenuInferior/MenuInferior"
 import "./Configuracoes.css"
+import logo from "../../assets/LogoZelo+.png"
+import utilizador from "../../assets/do-utilizador.png"
+import cadeado from "../../assets/cadeado.png"
+import notificacao from "../../assets/notificacao.png"
+import boiaImg from "../../assets/boia-de-vida.png"
+import info from "../../assets/informacoes.png"
+import donate from "../../assets/doar.png"
 
 const Configuracoes = () => {
+  const [perfilUsuario, setPerfilUsuario] = useState("")
+
+  useEffect(() => {
+    const tipoPerfil = localStorage.getItem("tipoPerfil")
+    if (tipoPerfil) {
+      setPerfilUsuario(tipoPerfil)
+    }
+  }, [])
+
   const navigate = useNavigate()
 
   const handleBackClick = () => {
@@ -21,44 +37,67 @@ const Configuracoes = () => {
   const handlePrivacidadeeSegurancaClick = () => {
     navigate("/privacidade-e-seguranca")
   }
+
+  const handleAdicionarUsuario = () => {
+    navigate("/tela-adicionar-usuarios")
+  }
+
+  const handleListagemDeUsuario = () => {
+    navigate("/tela-listagem-de-usuarios")
+  }
+
+  const isAdmin = perfilUsuario === "Administrador"
+
   return (
     <div>
       <header>
-        <img
-          src="/img/LogoZelo+.png"
-          alt="Logo do Via Certa ABC"
-          class="logo"
-        />
+        <img src={logo} alt="Logo do Via Certa ABC" class="logo" />
       </header>
       <main className="container">
         <div className="btnVoltar">
           <h2 class="tituloConfiguracoes">Configurações</h2>
         </div>{" "}
         <div class="opcoes">
-          <a>
-            <img src="/img/estrela.png" class="icones" />
-            Aparência
-          </a>
+          {isAdmin && (
+            <>
+              <a onClick={handleAdicionarUsuario}>
+                <img
+                  src={utilizador}
+                  className="icones"
+                  alt="Adicionar usuários"
+                />
+                Adicionar usuários
+              </a>
+              <a onClick={handleListagemDeUsuario}>
+                <img
+                  src={utilizador}
+                  className="icones"
+                  alt="tela-listagem-de-usuarios"
+                />
+                Listagem de usuários
+              </a>
+            </>
+          )}
           <a onClick={handlePrivacidadeeSegurancaClick}>
-            <img src="/img/cadeado.png" class="icones" />
-            Privacidade e Segurança
+            <img src={cadeado} class="icones" />
+            Privacidade e segurança
           </a>
           <a onClick={handleNotificacoesClick}>
-            <img src="/img/notificacao.png" class="icones" />
+            <img src={notificacao} class="icones" />
             Notificações
           </a>
           <a>
-            <img src="/img/boia-de-vida.png" class="icones" />
+            <img src={boiaImg} class="icones" />
             Ajuda
           </a>
           <a onClick={handleSobreClick}>
-            <img src="/img/informacoes.png" class="icones" />
+            <img src={info} class="icones" />
             Sobre
           </a>
         </div>
         <div class="btnDoar">
           <h2>Doe e Ajude!</h2>
-          <img src="/img/doar.png" class="icones imgDoar" />
+          <img src={donate} class="icones imgDoar" />
         </div>
       </main>
 

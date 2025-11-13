@@ -1,6 +1,7 @@
 import axios from "axios"
 
-const API_URL = "http://localhost:3000"
+const API_URL = "https://downtroddenly-undecreed-herschel.ngrok-free.dev"
+// const API_URL = "http://localhost:3000"
 
 export const login = async (email, senha) => {
   try {

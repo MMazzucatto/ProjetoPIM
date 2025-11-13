@@ -1,5 +1,9 @@
 import React from "react"
 import { useNavigate } from "react-router-dom"
+import botaoHome from "../../assets/botao-home.png"
+import appsImg from "../../assets/apps.png"
+import iconeAviso from "../../assets/do-utilizador.png"
+import engrenagem from "../../assets/engrenagem.png"
 import "./MenuInferior.css"
 
 const MenuInferior = () => {
@@ -25,25 +29,25 @@ const MenuInferior = () => {
     <div class="menu-inferior">
       <img
         class="icones"
-        src="/img/botao-home.png"
+        src={botaoHome}
         alt="Icone de Home"
         onClick={handleHomeClick}
       />
       <img
         class="icones"
-        src="/img/apps.png"
+        src={appsImg}
         alt="Icone de Apps"
         onClick={handleDenunciaClick}
       />
       <img
         class="icones"
-        src="/img/do-utilizador.png"
+        src={iconeAviso}
         alt="Icone de Aviso"
         onClick={handleLoginClick}
       />
       <img
         class="icones"
-        src="/img/engrenagem.png"
+        src={engrenagem}
         alt="Icone de Aviso"
         onClick={handleConfigClick}
       />

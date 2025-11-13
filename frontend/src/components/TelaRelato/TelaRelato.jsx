@@ -5,12 +5,14 @@ import "./TelaRelato.css"
 import swal from "sweetalert2"
 import { cadastroRelato } from "./TelaRelato.service"
 import { isAuthenticated } from "../../utils/authValidation.js"
+import logo from "../../assets/LogoZelo+.png"
 
 const TelaRelato = () => {
   const navigate = useNavigate()
 
   const [categoria, setCategoria] = useState("")
-  const [conteudo, setConteudo] = useState("")
+  const [descricao, setDescricao] = useState("")
+  const [imagem, setImagem] = useState(null)
 
   useEffect(() => {
     if (!isAuthenticated()) {
@@ -23,7 +25,6 @@ const TelaRelato = () => {
     }
 
     const tipoPerfil = localStorage.getItem("tipoPerfil")
-
     if (tipoPerfil === "Manutenção") {
       navigate("/tela-listagem-chamados")
     }
@@ -32,11 +33,11 @@ const TelaRelato = () => {
   const handleSubmit = async (e) => {
     e.preventDefault()
 
-    if (!categoria || !conteudo) {
+    if (!categoria || !descricao) {
       swal.fire({
         icon: "error",
         title: "Erro",
-        text: "Selecione uma categoria e preencha a descrição!",
+        text: "Selecione uma categoria e preencha todos os campos!",
       })
       return
     }
@@ -56,8 +57,9 @@ const TelaRelato = () => {
 
     const relato = {
       titulo: categoria,
-      descricao: conteudo,
+      descricao,
       idUsuario,
+      imagem: imagem,
     }
 
     try {
@@ -68,7 +70,8 @@ const TelaRelato = () => {
         text: "Relato cadastrado com sucesso!",
       })
       setCategoria("")
-      setConteudo("")
+      setDescricao("")
+      setImagem(null)
     } catch (error) {
       swal.fire({
         icon: "error",
@@ -81,69 +84,45 @@ const TelaRelato = () => {
   return (
     <div>
       <header>
-        <img
-          src="/img/LogoZelo+.png"
-          alt="Logo do Via Certa ABC"
-          className="logo"
-        />
+        <img src={logo} alt="Logo do Via Certa ABC" className="logo" />
       </header>
-      <div className="container">
-        <main>
-          <div className="relato-container">
-            <h2>Novo Relato</h2>
-            <form id="cadastrarRelato" onSubmit={handleSubmit}>
-              <select
-                id="categoria"
-                value={categoria}
-                onChange={(e) => setCategoria(e.target.value)}
-              >
-                <option value="" disabled hidden>
-                  Selecione a categoria
-                </option>
-                <option value="Manutenção">Manutenção</option>
-                <option value="Limpeza">Limpeza</option>
-                <option value="Iluminação">Iluminação</option>
-                <option value="Hidráulica">Hidráulica</option>
-                <option value="Infraestrutura">Infraestrutura</option>
-                <option value="Segurança">Segurança</option>
-                <option value="Pavimentação">Pavimentação</option>
-                <option value="Mobiliário">Mobiliário</option>
-              </select>
 
-              <textarea
-                id="conteudo"
-                placeholder="Descreva o ocorrido"
-                value={conteudo}
-                onChange={(e) => setConteudo(e.target.value)}
-              />
+      <main className="container">
+        <div className="relato-container">
+          <h2>Novo Relato</h2>
+          <form onSubmit={handleSubmit}>
+            <select
+              value={categoria}
+              onChange={(e) => setCategoria(e.target.value)}
+            >
+              <option value="" disabled hidden>
+                Selecione a categoria
+              </option>
+              <option value="Manutenção">Manutenção</option>
+              <option value="Limpeza">Limpeza</option>
+              <option value="Iluminação">Iluminação</option>
+              <option value="Hidráulica">Hidráulica</option>
+              <option value="Infraestrutura">Infraestrutura</option>
+              <option value="Segurança">Segurança</option>
+              <option value="Pavimentação">Pavimentação</option>
+              <option value="Mobiliário">Mobiliário</option>
+            </select>
 
-            </form>
-          </div>
-        </main>
-      </div>
-    <main className="localizacao-input">
-       <div className="container">
-          <div className="relato-container">
-            <h2>Localização</h2>
-            <form id="cadastrarRelato" onSubmit={handleSubmit}>
+            <textarea
+              placeholder="Descreva o ocorrido"
+              value={descricao}
+              onChange={(e) => setDescricao(e.target.value)}
+            />
 
-              <input
-                id="conteudo"
-                placeholder="Informe a localização do ocorrido"
-                value={conteudo}
-                onChange={(e) => setConteudo(e.target.value)}
-              />
+            <input type="file" onChange={(e) => setImagem(e.target.files[0])} />
 
-            </form>
-          </div>
-      </div>
+            <button type="submit" className="btn-enviar">
+              Enviar Relato
+            </button>
+          </form>
+        </div>
       </main>
-          
-            <div class="container" align="center">
-              <button id="enviarRelato" type="submit">
-                Enviar Relato
-              </button>
-              </div>
+
       <footer>
         <MenuInferior />
       </footer>

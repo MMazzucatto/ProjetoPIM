@@ -1,31 +1,30 @@
-import React from "react";
-import { useNavigate } from "react-router-dom";
-import MenuInferior from "../MenuInferior/MenuInferior";
-import "./Usuario.css";
+import React from "react"
+import { useNavigate } from "react-router-dom"
+import MenuInferior from "../MenuInferior/MenuInferior"
+import "./Usuario.css"
+import setaEsquerda from "../../assets/seta-esquerda.png"
+import logo from "../../assets/LogoZelo+.png"
+import doUtilizador from "../../assets/do-utilizador.png"
 
 const Usuario = () => {
-  const navigate = useNavigate();
+  const navigate = useNavigate()
 
   const handleBackClick = () => {
-    window.history.back();
-  };
+    window.history.back()
+  }
 
   const handleEditarFoto = () => {
-    localStorage.clear();
-    navigate("/tela-editar-foto");
-  };
+    localStorage.clear()
+    navigate("/tela-editar-foto")
+  }
   return (
     <div>
       <header>
-        <img
-          src="/img/LogoZelo+.png"
-          alt="Logo do Via Certa ABC"
-          class="logo"
-        />
+        <img src={logo} alt="Logo do Via Certa ABC" class="logo" />
       </header>
 
       <img
-        src="/img/seta-esquerda.png"
+        src={setaEsquerda}
         className="icones"
         onClick={handleBackClick}
         alt="Voltar"
@@ -36,7 +35,7 @@ const Usuario = () => {
         </div>
         <main>
           <div class="DadosUsuario" onClick={handleEditarFoto}>
-            <img class="FotoPerfil" src="/img/do-utilizador.png"></img>
+            <img class="FotoPerfil" src={doUtilizador}></img>
           </div>
           <div className="usuario-container">
             <p type="name" placeholder="E-mail">
@@ -55,6 +54,6 @@ const Usuario = () => {
         <MenuInferior />
       </footer>
     </div>
-  );
-};
-export default Usuario;
+  )
+}
+export default Usuario

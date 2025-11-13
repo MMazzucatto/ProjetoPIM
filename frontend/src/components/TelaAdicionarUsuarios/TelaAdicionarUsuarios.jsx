@@ -1,38 +1,33 @@
-import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
-import MenuInferior from "../MenuInferior/MenuInferior";
-import "./TelaAdicionarUsuarios.css";
-import swal from "sweetalert2";
-import IconeVoltar from "../../assets/seta-esquerda.png";
-import LogoZeloPlus from "../../assets/LogoZelo+.png";
-
+import React, { useState } from "react"
+import { useNavigate } from "react-router-dom"
+import MenuInferior from "../MenuInferior/MenuInferior"
+import "./TelaAdicionarUsuarios.css"
+import swal from "sweetalert2"
+import IconeVoltar from "../../assets/seta-esquerda.png"
+import LogoZeloPlus from "../../assets/LogoZelo+.png"
 
 const TelaAdicionarUsuarios = () => {
-  const [perfil, setPerfil] = useState(""); // controla o botão selecionado
+  const [perfil, setPerfil] = useState("") // controla o botão selecionado
 
   const handleBackClick = () => {
-    window.history.back();
-  };
+    window.history.back()
+  }
   const handleCadastrar = () => {
     if (!perfil) {
       swal.fire(
         "Atenção!",
         "Selecione um perfil antes de cadastrar!",
         "warning"
-      );
-      return;
+      )
+      return
     }
-    swal.fire("Sucesso!", "Usuário adicionado!", "success");
-  };
+    swal.fire("Sucesso!", "Usuário adicionado!", "success")
+  }
 
   return (
     <div>
       <header>
-        <img
-          src={LogoZeloPlus}
-          alt="Logo do Via Certa ABC"
-          className="logo"
-        />
+        <img src={LogoZeloPlus} alt="Logo do Via Certa ABC" className="logo" />
       </header>
       <img
         src={IconeVoltar}
@@ -59,13 +54,6 @@ const TelaAdicionarUsuarios = () => {
             placeholder="E-mail"
             required
           />
-          <input
-            type="text"
-            id="local"
-            name="local"
-            placeholder="Apartamento / Sala / Local"
-            required
-          />
         </div>
 
         <div style={{ marginTop: "20px" }} className="container-perfil">
@@ -75,7 +63,7 @@ const TelaAdicionarUsuarios = () => {
               className={`botao-perfil ${perfil === "Morador" ? "ativo" : ""}`}
               onClick={() => setPerfil("Morador")}
             >
-              Morador
+              Usuário
             </button>
             <button
               className={`botao-perfil ${perfil === "Tecnico" ? "ativo" : ""}`}
@@ -97,7 +85,7 @@ const TelaAdicionarUsuarios = () => {
         <MenuInferior />
       </footer>
     </div>
-  );
-};
+  )
+}
 
-export default TelaAdicionarUsuarios;
+export default TelaAdicionarUsuarios

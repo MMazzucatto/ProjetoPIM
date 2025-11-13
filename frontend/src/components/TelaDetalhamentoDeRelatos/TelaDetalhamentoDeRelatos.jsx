@@ -1,18 +1,18 @@
-import React from "react";
-import { useNavigate } from "react-router-dom";
-import MenuInferior from "../MenuInferior/MenuInferior";
-import "./TelaDetalhamentoDeRelatos.css";
-import swal from "sweetalert2";
-import IconeVoltar from "../../assets/seta-esquerda.png";
-import LogoZeloPlus from "../../assets/LogoZelo+.png";
-import PinLocalizacao from "../../assets/pin-de-localizacao.png";
-import ImagemExemplo from "../../assets/imagem-exemplo.jpg";
-import IconePerfil from "../../assets/do-utilizador.png";
+import React from "react"
+import { useNavigate } from "react-router-dom"
+import MenuInferior from "../MenuInferior/MenuInferior"
+import "./TelaDetalhamentoDeRelatos.css"
+import swal from "sweetalert2"
+import IconeVoltar from "../../assets/seta-esquerda.png"
+import LogoZeloPlus from "../../assets/LogoZelo+.png"
+import PinLocalizacao from "../../assets/pin-de-localizacao.png"
+import ImagemExemplo from "../../assets/imagem-exemplo.jpg"
+import IconePerfil from "../../assets/do-utilizador.png"
 
 const TelaDetalhamentoDeRelatos = () => {
   const handleBackClick = () => {
-    window.history.back();
-  };
+    window.history.back()
+  }
   return (
     <div>
       <header>
@@ -41,8 +41,8 @@ const TelaDetalhamentoDeRelatos = () => {
           </div>
         </div>
         <div>
-          <h1 className="titulo">Localização</h1>
-          <div className="relato-container-loc">Localização</div>
+          <h1 className="titulo">Localização:</h1>
+          <div className="relato-container-loc">Cozinha do 1º andar</div>
         </div>
 
         <div>
@@ -54,8 +54,9 @@ const TelaDetalhamentoDeRelatos = () => {
               alt="Pin de localização"
             />
             <p>
-              Criado em {/*data*/} {/*hora*/} <br />
-              Em andamento desde {/*data*/} {/*hora*/} <br />
+              Criado em: 22/05/2025
+              <br />
+              Em andamento desde: 23/05/2025 <br />
             </p>
           </div>
           <div className="relato-container-tec">
@@ -64,7 +65,7 @@ const TelaDetalhamentoDeRelatos = () => {
               src={IconePerfil}
               alt="Pin de localização"
             />
-            <p> Técnico responsável: {/*nome*/}</p>
+            <p> Técnico responsável: Caio Passarelli Faustino</p>
           </div>
         </div>
       </main>
@@ -73,6 +74,6 @@ const TelaDetalhamentoDeRelatos = () => {
         <MenuInferior />
       </footer>
     </div>
-  );
-};
-export default TelaDetalhamentoDeRelatos;
+  )
+}
+export default TelaDetalhamentoDeRelatos
