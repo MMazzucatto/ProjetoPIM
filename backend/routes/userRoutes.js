@@ -7,6 +7,10 @@ import {
   getStatusToReports,
   createResposta,
   deleteReport,
+  getAllUsers,
+  deleteUser,
+  getUserByUserId,
+  getFinishedReports,
 } from "../controllers/userController.js"
 
 const storage = multer.diskStorage({
@@ -27,5 +31,9 @@ router.get("/getReports", getReports)
 router.get("/getStatusToReports", getStatusToReports)
 router.post("/createResposta", createResposta)
 router.delete("/deleteReport/:idRelato", deleteReport)
+router.get("/getAllUsers", getAllUsers)
+router.delete("/deleteUser/:idUsuario", deleteUser)
+router.get("/getUserByUserId/:idUsuario", getUserByUserId)
+router.get("/getFinishedReports", getFinishedReports)
 
 export default router

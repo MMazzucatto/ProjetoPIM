@@ -40,7 +40,6 @@ export const createReport = async (req, res) => {
         .json({ error: "Token inválido para este usuário!" })
     }
 
-    // Pega o caminho da imagem, se houver
     const imagemPath = req.file ? req.file.path : null
 
     const novoRelato = await prisma.relato.create({
@@ -48,7 +47,7 @@ export const createReport = async (req, res) => {
         titulo,
         descricao,
         idUsuario: parseInt(idUsuario),
-        imagem: imagemPath, // salva o caminho da imagem no banco
+        imagem: imagemPath,
         idResponsavel: null,
         idStatus: 1,
       },
@@ -215,6 +214,88 @@ export const deleteReport = async (req, res) => {
       return res.status(404).json({ error: "Chamado não encontrado." })
     }
 
+    return res.status(500).json({ error: "Ocorreu um erro no servidor." })
+  }
+}
+
+export const getAllUsers = async (req, res) => {
+  try {
+    const usersList = await prisma.usuario.findMany()
+
+    res.status(200).json({
+      usersList,
+    })
+  } catch (error) {
+    res.status(500).json({
+      error: "Erro ao buscar usuarios",
+      details: error.message,
+    })
+  }
+}
+
+export const deleteUser = async (req, res) => {
+  try {
+    const { idUsuario } = req.params
+
+    await prisma.$transaction(async (tx) => {
+      await tx.usuario.deleteMany({
+        where: {
+          idUsuario: Number(idUsuario),
+        },
+      })
+    })
+
+    return res.status(200).json({ message: "Usuario deletado com sucesso." })
+  } catch (error) {
+    console.error("Erro ao deletar Usuario:", error)
+
+    if (error.code === "P2025") {
+      return res.status(404).json({ error: "Usuario não encontrado." })
+    }
+
+    return res.status(500).json({ error: "Ocorreu um erro no servidor." })
+  }
+}
+
+export const getUserByUserId = async (req, res) => {
+  try {
+    const { idUsuario } = req.params
+
+    const user = await prisma.usuario.findMany({
+      where: {
+        idUsuario: Number(idUsuario),
+      },
+    })
+
+    res.status(200).json({
+      message: "Usuario encontrado.",
+      user: user,
+    })
+  } catch (error) {
+    console.error("Erro ao buscar Usuario:", error)
+
+    if (error.code === "P2025") {
+      return res.status(404).json({ error: "Usuario não encontrado." })
+    }
+
+    return res.status(500).json({ error: "Ocorreu um erro no servidor." })
+  }
+}
+
+export const getFinishedReports = async (req, res) => {
+  try {
+    const reports = await prisma.relato.findMany({
+      where: {
+        idStatus: 3,
+      },
+    })
+
+    res.status(200).json({
+      message: "Usuario encontrado.",
+      reports: reports,
+    })
+  } catch (error) {
+    console.log(error)
     return res.status(500).json({ error: "Ocorreu um erro no servidor." })
   }
 }

@@ -15,15 +15,19 @@ const Sobre = () => {
           <div>
             <h1>Sobre nós:</h1>
             <p>
-              Este aplicativo foi desenvolvido com o intuito de ajudar pessoas
-              que estão passando por momentos difíceis, como depressão,
-              ansiedade, entre outros. Através dele, você poderá conversar com
-              pessoas que estão passando por situações semelhantes, além de ter
-              acesso a conteúdos que podem te ajudar a superar esses momentos.{" "}
+              O Zelo+ foi criado com um propósito claro: transformar a maneira
+              como você cuida do seu espaço.
             </p>
             <p>
-              Se você está passando por um momento difícil, não hesite em pedir
-              ajuda. Você não está sozinho!
+              Acreditamos que a comunicação sobre manutenção não precisa ser
+              complicada, baseada em e-mails perdidos ou mensagens de WhatsApp.
+              Nossa plataforma centraliza os chamados, garantindo transparência
+              total do início ao fim.
+            </p>
+            <p>
+              Conectamos usuários, gestores e equipes de manutenção para que,
+              juntos, possam zelar pelos ambientes de forma eficiente e
+              colaborativa.
             </p>
           </div>
         </div>

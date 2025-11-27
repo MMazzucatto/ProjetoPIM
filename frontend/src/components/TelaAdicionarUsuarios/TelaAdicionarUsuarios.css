@@ -13,7 +13,7 @@
 }
 
 .botao-perfil {
-  width: 120px;
+  width: 140px;
   padding: 10px;
   background-color: #4169e1;
   color: black;
@@ -32,14 +32,14 @@
 }
 
 .container-adicionar-usuario {
-    margin-top: 50px !important;
+  margin-top: 50px !important;
 }
-.input-perfil{
-    text-align: center;
+.input-perfil {
+  text-align: center;
 }
 
-.btnCadastrar{
-    margin-top:80px;
+.btnCadastrar {
+  margin-top: 80px;
 }
 
 .botao-perfil {
