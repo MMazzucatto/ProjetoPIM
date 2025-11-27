@@ -8,7 +8,6 @@ import {
   deleteReport,
 } from "./TelaListagemChamados.service"
 import Modal from "../Modal/Modal"
-import { act } from "react"
 import swal from "sweetalert2"
 
 const TelaListagemChamados = () => {
@@ -23,7 +22,12 @@ const TelaListagemChamados = () => {
   const [newStatusId, setNewStatusId] = useState("")
 
   const API_URL = "https://downtroddenly-undecreed-herschel.ngrok-free.dev"
-  // const API_URL = "http://localhost:3000"
+
+  const filtrarChamadosAtivos = (listaDeChamados) => {
+    return listaDeChamados.filter(
+      (report) => report.descricaoStatus !== "Chamado concluído"
+    )
+  }
 
   useEffect(() => {
     const fetchReports = async () => {
@@ -35,7 +39,9 @@ const TelaListagemChamados = () => {
           getStatusToReports(),
         ])
 
-        setReports(reportsResponse)
+        const chamadosFiltrados = filtrarChamadosAtivos(reportsResponse)
+        setReports(chamadosFiltrados)
+
         setStatusList(statusResponse)
       } catch (error) {
         setError(
@@ -81,8 +87,9 @@ const TelaListagemChamados = () => {
       })
 
       const response = await getReports()
-      alert(response)
-      setReports(response)
+
+      const chamadosFiltrados = filtrarChamadosAtivos(response)
+      setReports(chamadosFiltrados)
     } catch (error) {
       swal.fire({
         icon: "error",
@@ -111,7 +118,8 @@ const TelaListagemChamados = () => {
       })
 
       const response = await getReports()
-      setReports(response)
+      const chamadosFiltrados = filtrarChamadosAtivos(response)
+      setReports(chamadosFiltrados)
     } catch (error) {
       swal.fire({
         icon: "error",
@@ -128,7 +136,8 @@ const TelaListagemChamados = () => {
       swal.fire({
         icon: "info",
         title: "Imagem não disponível",
-        text: "Nenhuma imagem foi anexada a este chamado (ou a URL está vazia).",
+        title:
+          "Nenhuma imagem foi anexada a este chamado (ou a URL está vazia).",
       })
       return
     }
@@ -181,7 +190,6 @@ const TelaListagemChamados = () => {
             <h5>Tipo de Chamado: {report.titulo}</h5>
             <p>Descrição: {report.descricao}</p>
             <p>Status: {report.descricaoStatus}</p>
-            <p>Responsável: {!!report.responsavel ? report.responsavel : ""}</p>
             <p>Criado em: {dateFormatter(report.createdAt)}</p>
 
             {selectedReportId === report.idRelato && (
@@ -242,6 +250,7 @@ const TelaListagemChamados = () => {
   const handleBackClick = () => {
     window.history.back()
   }
+
   return (
     <div>
       <header>

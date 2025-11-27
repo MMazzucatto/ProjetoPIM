@@ -86,10 +86,6 @@ const Configuracoes = () => {
             <img src={notificacao} class="icones" />
             Notificações
           </a>
-          <a>
-            <img src={boiaImg} class="icones" />
-            Ajuda
-          </a>
           <a onClick={handleSobreClick}>
             <img src={info} class="icones" />
             Sobre

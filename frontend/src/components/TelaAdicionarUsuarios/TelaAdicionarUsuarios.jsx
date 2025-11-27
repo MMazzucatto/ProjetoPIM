@@ -5,23 +5,60 @@ import "./TelaAdicionarUsuarios.css"
 import swal from "sweetalert2"
 import IconeVoltar from "../../assets/seta-esquerda.png"
 import LogoZeloPlus from "../../assets/LogoZelo+.png"
+import { cadastroUsuario } from "../TelaCadastro/TelaCadastro.service"
 
 const TelaAdicionarUsuarios = () => {
-  const [perfil, setPerfil] = useState("") // controla o botão selecionado
+  const [perfil, setPerfil] = useState("")
 
   const handleBackClick = () => {
     window.history.back()
   }
-  const handleCadastrar = () => {
-    if (!perfil) {
-      swal.fire(
-        "Atenção!",
-        "Selecione um perfil antes de cadastrar!",
-        "warning"
-      )
+
+  const handleSuccess = () => {
+    swal.fire({
+      icon: "success",
+      title: "Sucesso",
+      text: "Conta criada com sucesso!",
+    })
+    document.getElementById("nome").value = ""
+    document.getElementById("email").value = ""
+    document.getElementById("senha").value = ""
+    setPerfil("")
+  }
+
+  const criarConta = async () => {
+    const nome = document.getElementById("nome").value
+    const email = document.getElementById("email").value
+    const senha = document.getElementById("senha").value
+    const tipoPerfil = perfil
+
+    if (!nome || !email || !senha || !tipoPerfil) {
+      swal.fire({
+        icon: "error",
+        title: "Erro",
+        text: "Preencha todos os campos!",
+      })
       return
     }
-    swal.fire("Sucesso!", "Usuário adicionado!", "success")
+    if (!email.includes("@") || !email.includes(".")) {
+      swal.fire({
+        icon: "error",
+        title: "Erro",
+        text: "Por favor, insira um e-mail válido.",
+      })
+      return
+    }
+
+    try {
+      await cadastroUsuario(nome, email, senha, tipoPerfil)
+      handleSuccess()
+    } catch (error) {
+      swal.fire({
+        icon: "error",
+        title: "Erro no cadastro",
+        text: error.message || "Ocorreu um erro ao criar a conta.",
+      })
+    }
   }
 
   return (
@@ -54,28 +91,37 @@ const TelaAdicionarUsuarios = () => {
             placeholder="E-mail"
             required
           />
+          <input
+            type="password"
+            id="senha"
+            name="senha"
+            placeholder="Senha"
+            required
+          />
         </div>
 
         <div style={{ marginTop: "20px" }} className="container-perfil">
           <h1 className="titulo">Perfil</h1>
           <div className="botoes-perfil">
             <button
-              className={`botao-perfil ${perfil === "Morador" ? "ativo" : ""}`}
-              onClick={() => setPerfil("Morador")}
+              className={`botao-perfil ${perfil === "Usuario" ? "ativo" : ""}`}
+              onClick={() => setPerfil("Usuario")}
             >
               Usuário
             </button>
             <button
-              className={`botao-perfil ${perfil === "Tecnico" ? "ativo" : ""}`}
-              onClick={() => setPerfil("Tecnico")}
+              className={`botao-perfil ${
+                perfil === "Manutenção" ? "ativo" : ""
+              }`}
+              onClick={() => setPerfil("Manutenção")}
             >
-              Técnico
+              Manutenção
             </button>
           </div>
         </div>
 
         <div className="btnCadastrar" align="center">
-          <button className="botao-salvar" onClick={handleCadastrar}>
+          <button className="botao-salvar" onClick={criarConta}>
             Cadastrar Usuário
           </button>
         </div>

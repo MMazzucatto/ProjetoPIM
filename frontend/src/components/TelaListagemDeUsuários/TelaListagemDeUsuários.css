@@ -1,53 +1,132 @@
-.adicionar {
-  background-color: #f8f9fa !important;
+body {
+  background-color: #f4f6f8;
 }
-
-.icone-adicionar {
-  width:40%;
- 
-}
-
-.relato-container-usuarios {
-    background: white;
-    padding: 20px;
-    border-radius: 45px;
-    text-align: center;
-    width: 100%;
-    margin-bottom: 10px;
-    display: flex;
-    justify-content: space-between;
-}
-
-.iconenometipo {
-    display: flex;
-    align-items: center;
-}
-.iconeexcluir{
-    margin-top:8px;
-}
-
 
 .usuarios-lista {
   width: 100%;
-  max-height: 430px; /* ou qualquer altura que desejar */
+  max-height: 65vh;
   overflow-y: auto;
   overflow-x: hidden;
-  margin-top: 14px;
+  margin-top: 20px;
+  padding-bottom: 20px;
+}
+
+.usuario-card {
+  background-color: #ffffff;
+  border-radius: 8px;
+  padding: 20px;
+  margin-bottom: 15px;
+  border: 1px solid #e0e0e0;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 15px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.usuario-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.usuario-avatar-container {
+  flex-shrink: 0;
+}
+
+.icone-usuario-card {
+  width: 45px;
+  height: 45px;
+  opacity: 0.7;
+}
+
+.usuario-info {
+  flex-grow: 1;
+  text-align: left;
+}
+
+.usuario-info h3 {
+  margin: 0;
+  font-size: 18px;
+  color: #333;
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+
+.usuario-info p {
+  margin: 0;
+  font-size: 14px;
+  color: #666;
+  line-height: 1.4;
+}
+
+.usuario-email {
+  color: #4a90e2;
+  font-size: 13px !important;
+}
+
+.usuario-actions {
+  flex-shrink: 0;
+}
+
+.btn-remover-usuario {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+  border-radius: 50%;
+  transition: background-color 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn-remover-usuario:hover {
+  background-color: #ffebee;
+}
+
+.icone-lixeira {
+  width: 24px;
+  height: 24px;
+  filter: grayscale(100%);
+  transition: filter 0.2s;
+}
+
+.btn-remover-usuario:hover .icone-lixeira {
+  filter: none;
+}
+
+.titulo-e-voltar {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.voltar-listar-usuarios {
+  cursor: pointer;
+  margin-right: 15px;
+  height: 24px;
+}
+
+.titulo-listagem-usuarios {
+  font-size: 22px;
+  color: #333;
+  margin: 0;
 }
 
 .adicionar-usuario-container {
-   text-align: right !important;
-   width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 10px;
 }
+
 .icone-adicionar {
-    width: 50px;
+  width: 45px;
+  cursor: pointer;
+  transition: transform 0.2s;
 }
 
-.voltar-listar-usuarios{
-    cursor: pointer;
-    margin-right: 10px;
+.icone-adicionar:hover {
+  transform: scale(1.1);
 }
-
-.titulo-listagem-usuarios{
-    margin-top: 3px !important;
-} 

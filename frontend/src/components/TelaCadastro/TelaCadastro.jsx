@@ -78,7 +78,7 @@ const TelaCadastro = () => {
                 <option value="" disabled selected hidden>
                   Tipo de Usuário
                 </option>
-                <option value="Usuario">Usuário</option>
+                <option value="Usuario">Padrão</option>
                 <option value="Manutenção">Manutenção</option>
               </select>
 

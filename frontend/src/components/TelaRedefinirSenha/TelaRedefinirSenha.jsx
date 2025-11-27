@@ -62,7 +62,7 @@ const TelaRedefinirSenha = () => {
             </form>
           </div>
           <div class="forgot-password" onClick={handleLogin}>
-            Voltar ao Login
+            Voltar
           </div>
         </main>
       </div>

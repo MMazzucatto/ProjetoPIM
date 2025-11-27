@@ -11,8 +11,6 @@ export const getReports = async () => {
       },
     })
 
-    console.log(response.data)
-
     return response.data.reports
   } catch (error) {
     throw error
